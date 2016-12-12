@@ -1,6 +1,7 @@
 "use strict"
 
 var app = angular.module('Celeste', ['ngRoute'])
+  .constant('CelesteAPIURL', 'http://localhost:8080/')
 
 app.config(function($routeProvider){
   $routeProvider
