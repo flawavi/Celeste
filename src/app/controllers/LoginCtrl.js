@@ -2,6 +2,6 @@
 
 app.controller('LoginCtrl', function($scope){
 
-  $scope.message = 'ARE WE WORKING?'
-
+  $scope.greeting = 'Hello, Explorer.'
+  $scope.message = ' I\'m Celeste. I\'d Like to teach you about space.'
 })

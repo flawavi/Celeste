@@ -7,7 +7,10 @@ module.exports = function(grunt) {
         asi: true,
         esnext: true,
         globalstrict: true,
-        globals: {"angular": true}
+        globals: {
+          "angular": true,
+          "app": true,
+      }
       },
       files: ['../app/**/*.js']
     },

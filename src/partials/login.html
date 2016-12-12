@@ -1,9 +1,11 @@
-<div>
-  <h1 class="loginGreeting">Hello, Explorer. I'm Celeste. I'd Like to teach you about space.</h1>
+<div class="loginForm">
+  <div>
+    <h1 class="loginGreeting">{{greeting}}</h1>
+    <h2 class="loginGreeting">{{message}}</h2>
+  </div>
   <br>
-  <p>{{message}}</p>
   <section class="auth-form">
-    <h4>Login or Register to Party</h4>
+    <h4 class="loginGreeting">Please login or register to start exploring the Universe</h4>
     <br>
       <div>
         email: <input type="email" name="email" placeholder="explorer email" autofocus="true" ng-model="account.email">
