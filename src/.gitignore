@@ -3,4 +3,4 @@ lib/node_modules
 **/lib/.sass_cache/**
 css/
 Values
-src/firebase
+/src/firebase
