@@ -15,7 +15,7 @@ app.factory("ExplorerFactory", function($q, $http, AuthFactory){
   }
 
   let postExplorer = (newProfile) => {
-    newProfile.uid = AuthFactory.getUser().uid
+    newProfile.userID = AuthFactory.getUser().uid
     return $q((resolve, reject) => {
     $http.post(`http://localhost:5000/explorer`)
     .success((obj) => {
