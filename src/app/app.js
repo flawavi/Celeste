@@ -1,7 +1,18 @@
 "use strict"
 
 var app = angular.module('Celeste', ['ngRoute'])
-  .constant('CelesteAPIURL', 'http://localhost:8080/')
+  .constant('CelesteURL', 'http://localhost:5000/')
+  .constant('FirebaseURL', 'celeste-b0847.firebaseapp.com')
+
+const currentUser = AuthFactory => AuthFactory.currentUser()
+
+const requireCurrentUser = AuthFactory => AuthFactory.currentUser().then(user => {
+  if (!user) throw new Error('NO_CURRENT_USER')
+})
+
+const redirectCurrentUser = AuthFactory => AuthFactory.currentUser().then(user => {
+  if (user) throw new Error('CURRENT_USER')
+})
 
 app.config(function($routeProvider){
   $routeProvider
@@ -13,9 +24,9 @@ app.config(function($routeProvider){
     templateUrl: 'partials/login.html',
     controller: 'LoginCtrl'
   })
-  .when('/play', {
-    templateUrl: 'partials/play.html',
-    controller: 'PlayCtrl'
+  .when('/create', {
+    templateUrl: 'partials/createExplorer.html',
+    controller: 'CreateExplorerCtrl'
   })
   .otherwise('/');
 });

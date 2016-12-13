@@ -24,8 +24,9 @@ app.controller('HomeCtrl', function(
       //   username: explorers.userName,
       //   }
       // }
-
     })
   }
+
+  // $scope.getExplorerById
 
 })
