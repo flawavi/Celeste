@@ -18,7 +18,7 @@ app.config(function($routeProvider){
   $routeProvider
   .when('/', {
     templateUrl: 'partials/home.html',
-    controller: 'HomeCtrl'
+    controller: 'LoginCtrl'
   })
   .when('/login', {
     templateUrl: 'partials/login.html',
@@ -27,6 +27,10 @@ app.config(function($routeProvider){
   .when('/create', {
     templateUrl: 'partials/createExplorer.html',
     controller: 'CreateExplorerCtrl'
+  })
+  .when('/home', {
+    templateUrl: 'partials/home.html',
+    controller: 'HomeCtrl'
   })
   .otherwise('/');
 });
