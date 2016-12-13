@@ -16,6 +16,15 @@ app.controller('HomeCtrl', function(
     ExplorerFactory.getExplorers()
     .then((explorers) => {
       console.log(explorers)
+      // explorers.forEach(){
+      //   $scope.explorers = {
+      //   firstName: explorers.firstName,
+      //   lastName: explorers.lastName,
+      //   age: explorers.age,
+      //   username: explorers.userName,
+      //   }
+      // }
+
     })
   }
 

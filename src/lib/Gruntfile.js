@@ -3,14 +3,11 @@ module.exports = function(grunt) {
   grunt.initConfig({
     jshint: {
       options: {
-        predef: [ "document", "console", "$", "$scope", "app"],
+        predef: [ "document", "console", "$", "$scope", "app", "firebase", "$route", "infoWindow", "map", "_"],
         asi: true,
         esnext: true,
         globalstrict: true,
-        globals: {
-          "angular": true,
-          "app": true,
-      }
+        globals: {"angular": true, "app": true}
       },
       files: ['../app/**/*.js']
     },
