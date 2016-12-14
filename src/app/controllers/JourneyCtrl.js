@@ -7,6 +7,17 @@ app.controller('JourneyCtrl', function(
   JourneyFactory,
   ExplorerFactory){
 
+
+
+  // $scope.listJournies = () => {
+    JourneyFactory.getJournies()
+    .then(data => {
+      console.log(data)
+      $scope.journies = data
+    })
+  // }
+
+
   // $scope.explorer = ExplorerFactory.getExplorerById(explorerId)
 AuthFactory.currentUser().then(user => {
   console.log(user.uid)
