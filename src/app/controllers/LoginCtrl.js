@@ -1,6 +1,6 @@
 'use strict'
 
-app.controller('LoginCtrl', function($scope, $location, AuthFactory, ExplorerFactory){
+app.controller('LoginCtrl', function($scope, $location, $window, AuthFactory, ExplorerFactory){
 
   $scope.greeting = 'Hello, Explorer.'
   $scope.message = ' I\'m Celeste. I\'d Like to teach you about space.'
@@ -33,6 +33,24 @@ app.controller('LoginCtrl', function($scope, $location, AuthFactory, ExplorerFac
         $window.location.href = "#/createExplorer"
       } else {
         $window.location.href = "#/login"
+      }
+    },
+    (error) => {
+      console.log(error)
+    })
+  }
+
+  $scope.login = () => {
+    AuthFactory.loginUser({
+      email: $scope.account.email,
+      password: $scope.account.password
+    })
+    .then((userData) => {
+      if(userData) {
+        $window.location.replace("#/createExplorer")
+      console.log('USERDATA', userData)
+      } else {
+        $window.location.replace("#/login")
       }
     },
     (error) => {
