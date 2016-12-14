@@ -1,0 +1,17 @@
+<nav class="navbar navbar-default" ng-controller="NavCtrl">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <!-- <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      </button> -->
+      <a class="navbar-brand" ng-href="/#/">CELESTE</a>
+      </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li ng-show="isLoggedIn"><a ng-href="#/">Start A Journey</a></li>
+        <li ng-show="isLoggedIn"><a ng-href="#/createExplorer">Your Profile</a></li>
+        <li><a class="logout" ng-click="logout()">Logout</a></li>
+      </ul>
+    </div>
+    <h3 ng-show="isLoggedIn">{{userName}}</h3>
+  </div>
+</nav>
