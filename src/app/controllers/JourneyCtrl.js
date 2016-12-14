@@ -1,7 +1,13 @@
 'use strict'
 
-app.controller('JourneyCtrl', function($scope, $location, JourneyFactory, AuthFactory, ExplorerFactory){
+app.controller('JourneyCtrl', function(
+  $scope,
+  $location,
+  AuthFactory,
+  JourneyFactory,
+  ExplorerFactory){
 
-  let explorerId = AuthFactory.getUser().uid
-  $scope.explorer = ExplorerFactory.getExplorerById(explorerId)
+  ExplorerFactory.getExplorers()
+  .then(explorers => $scope.explorerName = explorers[0].firstName)
+  // $scope.explorer = ExplorerFactory.getExplorerById(explorerId)
 })
