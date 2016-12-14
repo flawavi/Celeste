@@ -19,13 +19,12 @@ app.factory("AuthFactory", function(){
   }
 
   let getUser = () => {
-    return loggedInUser;
+    return firebase.auth().currentUser
   }
 
   let currentUser = () => {
     return new Promise ((resolve, reject) => {
       firebase.auth().onAuthStateChanged(user => {
-
         loggedInUser = user;
         resolve(user)
       }, error => {

@@ -2,8 +2,9 @@
 
 app.controller("CreateExplorerCtrl", function($scope, $location, ExplorerFactory, AuthFactory){
 
-  console.log("CurrentUser", AuthFactory.currentUser())
+
   $scope.title = "Explorer Profile"
+  console.log('CurrentUser', AuthFactory.currentUser().then(user => user.uid))
 
   $scope.newExplorerProfile = {
     firstName: "",
@@ -13,10 +14,10 @@ app.controller("CreateExplorerCtrl", function($scope, $location, ExplorerFactory
   }
 
   $scope.createExplorer = () => {
-    ExplorerFactory.postProfile($scope.newExplorerProfile)
+    ExplorerFactory.postExplorer($scope.newExplorerProfile)
     .then((data) => {
       console.log(data)
-      // $location.url("/somewhere")
+      $location.url("/journey")
     })
   }
 
