@@ -7,7 +7,14 @@ app.controller('JourneyCtrl', function(
   JourneyFactory,
   ExplorerFactory){
 
-  ExplorerFactory.getExplorers()
-  .then(explorers => $scope.explorerName = explorers[0].firstName)
   // $scope.explorer = ExplorerFactory.getExplorerById(explorerId)
+AuthFactory.currentUser().then(user => {
+  console.log(user.uid)
+    ExplorerFactory.getExplorerById(user.uid)
+    .then(explorer => {
+      console.log(explorer)
+      $scope.isLoggedIn = true
+      $scope.explorerName = explorer.firstName
+    })
+  })
 })
