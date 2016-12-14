@@ -5,15 +5,15 @@ app.controller("NavCtrl", function(
   $window,
   $location,
   AuthFactory,
-  ProfileFactory
+  ExplorerFactory
   ){
 
   $scope.isLoggedIn = false
   AuthFactory.currentUser().then(user => {
-    ProfileFactory.getProfileById(user.uid)
-    .then(profile => {
+    ExplorerFactory.getExplorerById(user.uid)
+    .then(explorer => {
       $scope.isLoggedIn = true
-      $scope.userName = "Welcome to the party, " + profile.userName
+      $scope.userName = "Greetings, " + explorer.userName
     })
   })
 
@@ -29,9 +29,5 @@ app.controller("NavCtrl", function(
     })
   }
 
-
   $scope.isActive = viewLocation => viewLocation === $location.path();
-
-
-
 });
