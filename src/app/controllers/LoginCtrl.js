@@ -28,7 +28,7 @@ app.controller('LoginCtrl', function($scope, $location, $window, AuthFactory, Ex
       email: $scope.account.email,
       password: $scope.account.password
     })
-    .then((userData) => {
+    .then(userData => {
       if(userData) {
         $window.location.href = "#/createExplorer"
       } else {
@@ -45,12 +45,12 @@ app.controller('LoginCtrl', function($scope, $location, $window, AuthFactory, Ex
       email: $scope.account.email,
       password: $scope.account.password
     })
-    .then((userData) => {
+    .then(userData => {
       if(userData) {
-        $window.location.replace("#/createExplorer")
+        $window.location.href = "#/commandDeck"
       console.log('USERDATA', userData)
       } else {
-        $window.location.replace("#/login")
+        $window.location.href = "#/login"
       }
     },
     (error) => {

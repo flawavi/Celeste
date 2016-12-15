@@ -1,14 +1,21 @@
 "use strict"
 
-app.controller("ExplorerProfileCtrl", function(
+app.controller("CommandDeckCtrl", function(
   $scope,
   $location,
   AuthFactory,
-  currentProfile,
   ExplorerFactory
   ){
 
-  $scope.explorer = currentProfile
+  AuthFactory.currentUser()
+  .then(data => {
+    console.log(data)
+    ExplorerFactory.getExplorerById(data.uid)
+    .then(explorer => {
+      console.log(explorer)
+      $scope.explorer = explorer
+    })
+  })
 
   $scope.deleteProfile = () => {
     alert("Are you sure you want to delete your profile?")
@@ -17,9 +24,5 @@ app.controller("ExplorerProfileCtrl", function(
       console.log("profile deleted")
       $location.url("/login")
     })
-  }
-
-  $scope.goToPartyForm = () => {
-    $location.url("party-form")
   }
 })

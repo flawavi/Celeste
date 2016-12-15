@@ -1,0 +1,19 @@
+<div>
+  <div class="celesteText">
+    <h1>Galonzo, {{explorer.firstName}}</h1>
+    <h3>It's me, Celeste. This is the Command Deck, where you can review your personal information, start journies, or pick up where you left off.</h3>
+  </div>
+<br>
+  <div class="profileForm">
+    <h4>Name </h4>
+    <span>{{explorer.firstName}} {{explorer.lastName}}</span>
+    <h4>Username </h4>
+    <span>{{explorer.username}}</span>
+    <h4>Trips around the Sun </h4>
+    <span>{{explorer.age}}</span>
+    <br>
+    <button class="party-btn btn btn-success" ng-click="newJourney()">New Journey</button>
+    <button class="delete-btn btn btn-danger" ng-click="deleteProfile()">Delete Profile</button>
+  </div>
+
+</div>

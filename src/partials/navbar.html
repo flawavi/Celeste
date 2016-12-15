@@ -8,10 +8,10 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li ng-show="isLoggedIn"><a ng-href="#/">Start A Journey</a></li>
-        <li ng-show="isLoggedIn"><a ng-href="#/createExplorer">Your Profile</a></li>
+        <li ng-show="isLoggedIn"><a ng-href="#/commandDeck">Command Deck</a></li>
         <li><a class="logout" ng-click="logout()">Logout</a></li>
       </ul>
     </div>
-    <h3 ng-show="isLoggedIn">{{userName}}</h3>
+    <h6 ng-show="isLoggedIn">{{explorer.firstName}} is currently exploring the universe</h3>
   </div>
 </nav>
