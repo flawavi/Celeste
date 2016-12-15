@@ -36,6 +36,10 @@ app.config(function($routeProvider){
     templateUrl: 'partials/home.html',
     controller: 'HomeCtrl'
   })
+  .when('/commanddeck', {
+    templateUrl: 'partials/explorer-profile',
+    controller: 'ExplorerProfileCtrl'
+  })
   .when('/journey', {
     templateUrl: 'partials/journey.html',
     controller: 'JourneyCtrl'

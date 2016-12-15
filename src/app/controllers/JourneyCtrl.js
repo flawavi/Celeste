@@ -9,13 +9,13 @@ app.controller('JourneyCtrl', function(
 
 
 
-  // $scope.listJournies = () => {
+  $scope.listJournies = () => {
     JourneyFactory.getJournies()
     .then(data => {
-      console.log(data)
+      console.log('hello data?', data)
       $scope.journies = data
     })
-  // }
+  }
 
 
   // $scope.explorer = ExplorerFactory.getExplorerById(explorerId)
