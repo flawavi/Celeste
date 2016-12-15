@@ -13,7 +13,7 @@ app.controller("NavCtrl", function(
     ExplorerFactory.getExplorerById(user.uid)
     .then(explorer => {
       $scope.isLoggedIn = true
-      $scope.userName = "Greetings, " + explorer.userName
+      $scope.explorer = explorer
     })
   })
 

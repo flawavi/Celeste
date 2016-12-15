@@ -4,9 +4,12 @@
   </h1>
   <div>
     <button class="btn btn-info" ng-click="listJournies()">Journies</button>
-    <div ng-repeat="journey in journies">
-      <p>{{journies.name}}</p>
-      <p>{{journies.destination}}</p>
+      <div ng-repeat="journey in journies">
+      <div class="row">
+        <div class="col-md-3">
+          <h5>{{journey.name}}</h5>
+          <h6>Destination: {{journey.destination}}</h6>
+        </div>
       </div>
   </div>
   <div>

@@ -17,7 +17,7 @@ const redirectCurrentUser = AuthFactory => AuthFactory.currentUser().then(user =
 app.config(function($routeProvider){
   $routeProvider
   .when('/', {
-    templateUrl: 'partials/login',
+    templateUrl: 'partials/login.html',
     controller: 'LoginCtrl'
   })
   .when('/login', {
@@ -32,9 +32,9 @@ app.config(function($routeProvider){
     templateUrl: 'partials/createExplorer.html',
     controller: 'CreateExplorerCtrl'
   })
-  .when('/home', {
-    templateUrl: 'partials/home.html',
-    controller: 'HomeCtrl'
+  .when('/commandDeck', {
+    templateUrl: 'partials/commandDeck.html',
+    controller: 'CommandDeckCtrl'
   })
   .when('/journey', {
     templateUrl: 'partials/journey.html',
