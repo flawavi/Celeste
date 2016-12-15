@@ -4,8 +4,15 @@ app.controller("CommandDeckCtrl", function(
   $scope,
   $location,
   AuthFactory,
+  JourneyFactory,
   ExplorerFactory
   ){
+
+  JourneyFactory.getJournies()
+  .then(data => {
+    console.log('hello data?', data)
+    $scope.journies = data
+  })
 
   AuthFactory.currentUser()
   .then(data => {
