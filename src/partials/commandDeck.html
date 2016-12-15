@@ -4,16 +4,32 @@
     <h3>It's me, Celeste. This is the Command Deck, where you can review your personal information, start journies, or pick up where you left off.</h3>
   </div>
 <br>
-  <div class="profileForm">
+  <div class="col-sm-6">
+    <center><h3>Explorer</h3></center>
     <h4>Name </h4>
     <span>{{explorer.firstName}} {{explorer.lastName}}</span>
     <h4>Username </h4>
     <span>{{explorer.username}}</span>
     <h4>Trips around the Sun </h4>
     <span>{{explorer.age}}</span>
-    <br>
-    <button class="party-btn btn btn-success" ng-click="newJourney()">New Journey</button>
-    <button class="delete-btn btn btn-danger" ng-click="deleteProfile()">Delete Profile</button>
+    <div>
+      <button class="delete-btn btn btn-danger" ng-click="deleteProfile()">Delete Profile</button>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <center><h3>Journies</h3></center>
+      <center><div>
+        <h4 class="col-sm-6">Name</h4>
+        <h4 class="col-sm-6">Destination</h4>
+      </div></center>
+      <!-- <div ng-repeat="journey in journies">
+        <div class="col-sm-3">
+
+          <span>{{journey.name}}</span>
+
+          <span>{{journey.destination}}</span> -->
+        </div>
+    </div>
   </div>
 
 </div>
