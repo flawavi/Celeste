@@ -48,6 +48,10 @@ app.config(function($routeProvider){
     templateUrl: 'partials/moon.html',
     controller: 'MoonCtrl'
   })
+  .when('/mars', {
+    templateUrl: 'partials/mars.html',
+    controller: 'MarsCtrl'
+  })
   .otherwise('/');
 });
 
