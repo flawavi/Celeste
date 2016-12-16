@@ -1,7 +1,11 @@
 "use strict"
 
-app.controller("CreateExplorerCtrl", function($scope, $location, ExplorerFactory, AuthFactory){
-
+app.controller("CreateExplorerCtrl", function(
+  $scope,
+  $location,
+  AuthFactory,
+  ExplorerFactory
+  ){
 
   $scope.title = "Explorer Profile"
   console.log('CurrentUser', AuthFactory.currentUser().then(user => user.uid))

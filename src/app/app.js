@@ -32,13 +32,21 @@ app.config(function($routeProvider){
     templateUrl: 'partials/createExplorer.html',
     controller: 'CreateExplorerCtrl'
   })
-  .when('/commandDeck', {
+  .when('/command_deck', {
     templateUrl: 'partials/commandDeck.html',
     controller: 'CommandDeckCtrl'
   })
   .when('/journey', {
     templateUrl: 'partials/journey.html',
     controller: 'JourneyCtrl'
+  })
+  .when('/create_journey', {
+    templateUrl: 'partials/createJourney.html',
+    controller: 'CreateJourneyCtrl'
+  })
+  .when('/moon', {
+    templateUrl: 'partials/moon.html',
+    controller: 'MoonCtrl'
   })
   .otherwise('/');
 });

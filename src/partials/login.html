@@ -1,11 +1,11 @@
 <div class="loginForm">
   <div>
-    <h1 class="celesteText">{{greeting}}</h1>
+    <h1 class="celesteText">{{greeting}} {{galonzo}}</h1>
     <h2 class="celesteText">{{message}}</h2>
   </div>
   <br>
-  <section class="auth-form">
     <h4 class="loginGreeting">Please login or register to start exploring the Universe</h4>
+  <center><section class="auth-form">
     <br>
       <div>
         email: <input type="email" name="email" placeholder="explorer_name@example.com" autofocus="true" ng-model="account.email">
@@ -19,5 +19,5 @@
         <button class="btn btn-info" ng-click="login()">Login</button>
         <button class="btn btn-success" ng-click="register()">Register</button>
       </div>
-  </section>
+  </section></center>
 </div>

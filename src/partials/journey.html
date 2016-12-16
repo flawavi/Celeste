@@ -3,17 +3,16 @@
     Welcome, {{explorerName}}. It's me, Celeste. Are you ready to begin your Journey?
   </h1>
   <div>
-    <button class="btn btn-info" ng-click="listJournies()">Journies</button>
-      <div ng-repeat="journey in journies">
-      <div class="row">
-        <div class="col-md-3">
-          <h5>{{journey.name}}</h5>
-          <h6>Destination: {{journey.destination}}</h6>
-        </div>
-      </div>
+
+  <img id="blackhole" ng-hide="blackhole" class="ng-hide" ng-src="imgs/blackhole.jpg">
   </div>
-  <div>
-    <button class="btn btn-success" ng-click="startJourney()">Blastoff</button>
-    <button class="btn btn-danger" ng-click="">I'm scared of the Universe</button>
-  </div>
+
+  <center>
+    <div>
+        <button class="btn btn-success" ng-click="startJourney()">Blastoff!</button>
+    </div>
+    <div>
+        <button class="btn btn-danger" ng-click="blackhole = false">I'm scared of the Universe...</button>
+    </div>
+  </center>
 </div>

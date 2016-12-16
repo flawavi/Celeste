@@ -2,7 +2,8 @@
 
 app.controller('LoginCtrl', function($scope, $location, $window, AuthFactory, ExplorerFactory){
 
-  $scope.greeting = 'Hello, Explorer.'
+  $scope.greeting = 'Hello, Explorer!'
+  $scope.galonzo = 'Or as we say on my home planet: Galonzo, Explorer!'
   $scope.message = ' I\'m Celeste. I\'d Like to teach you about space.'
 
   $scope.account = {
@@ -47,7 +48,7 @@ app.controller('LoginCtrl', function($scope, $location, $window, AuthFactory, Ex
     })
     .then(userData => {
       if(userData) {
-        $window.location.href = "#/commandDeck"
+        $window.location.href = "#/command_deck"
       console.log('USERDATA', userData)
       } else {
         $window.location.href = "#/login"
