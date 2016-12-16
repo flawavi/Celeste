@@ -2,6 +2,8 @@
 
 app.factory("JourneyFactory", function($q, $http){
 
+  let service
+
   let getJournies = () => {
     return $q((resolve, reject) => {
     $http.get(`http://localhost:5000/journey`)
@@ -13,6 +15,6 @@ app.factory("JourneyFactory", function($q, $http){
       })
     })
   }
-
-  return {getJournies}
+  service = {getJournies}
+  return service
 })
