@@ -1,6 +1,6 @@
 'use strict'
 
-app.controller('MarsCtrl', function(
+app.controller('JupiterCtrl', function(
   $scope,
   $location,
   TriviaFactory,
@@ -8,18 +8,17 @@ app.controller('MarsCtrl', function(
   CelesteFactory,
   ExplorerFactory
   ){
-  $scope.test = 'testing'
 
   CelesteFactory.getLessons()
   .then(lessons => {
     console.log(lessons)
     $scope.lessons = lessons
-    $scope.lesson1 = lessons[1].lesson
+    $scope.lesson1 = lessons[2].lesson
   })
 
   JourneyFactory.getJournies()
   .then(journies => {
-    var journeyID = journies[1].journeyID
+    var journeyID = journies[2].journeyID
     TriviaFactory.getTriviaByJourneyID(journeyID)
     .then(data => {
       console.log(data)
