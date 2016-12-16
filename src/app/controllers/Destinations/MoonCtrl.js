@@ -28,7 +28,7 @@ app.controller('MoonCtrl', function(
       $scope.question3 = $scope.questions[2]
       $scope.question4 = $scope.questions[3]
       $scope.question5 = $scope.questions[4]
-      $scope.answers = [data[0].answer, data[1].answer, data[2].answer, data[3].answer, data[4].answer,]
+      $scope.answers = [data[0].answer, data[1].answer, data[2].answer, data[3].answer, data[4].answer]
       $scope.answer1 = $scope.answers[0]
       $scope.answer2 = $scope.answers[1]
       $scope.answer3 = $scope.answers[2]
