@@ -1,11 +1,11 @@
 <div>
   <div class="celesteText">
-    <h1>Galonzo, {{explorer.firstName}}</h1>
+    <h1>Galonzo, {{explorer.firstName}}!</h1>
     <h3>It's me, Celeste. This is the Command Deck, where you can review your personal information, start journies, or pick up where you left off.</h3>
   </div>
 <br>
   <div class="col-sm-6">
-    <center><h3>Explorer</h3></center>
+    <center><h2>Explorer</h2></center>
     <h4>Name </h4>
     <span>{{explorer.firstName}} {{explorer.lastName}}</span>
     <h4>Username </h4>
@@ -17,17 +17,15 @@
     </div>
   </div>
   <div class="col-sm-6">
-    <center><h3>Journies</h3></center>
-      <center><div>
-        <h4 class="col-sm-6">Name</h4>
-        <h4 class="col-sm-6">Destination</h4>
+    <center><h2>Journies</h2></center>
+      <center>
+        <h3 class="col-sm-6">Name</h3>
+        <h3 class="col-sm-6">Destination</sh3pan>
+      </center>
+      <center><div ng-repeat="journey in journies">
+        <h5 class="col-sm-6">{{journey.name}}</h5>
+        <h5 class="col-sm-6">{{journey.destination}}</h5>
       </div></center>
-      <!-- <div ng-repeat="journey in journies">
-        <div class="col-sm-3">
-
-          <span>{{journey.name}}</span>
-
-          <span>{{journey.destination}}</span> -->
         </div>
     </div>
   </div>

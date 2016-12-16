@@ -14,5 +14,17 @@ app.factory("TriviaFactory", function($q, $http){
     })
   }
 
-  return {getAllTrivia}
+  let getTriviaByJourneyID = (id) => {
+    return $q((resolve, reject) => {
+    $http.get(`http://localhost:5000/trivia/${id}`)
+    .success(obj => {
+      resolve(obj)
+    })
+    .error(error => {
+      reject(error)
+      })
+    })
+  }
+
+  return {getAllTrivia, getTriviaByJourneyID}
 })

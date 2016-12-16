@@ -7,7 +7,7 @@ app.controller('JourneyCtrl', function(
   JourneyFactory,
   ExplorerFactory){
 
-
+  $scope.blackhole = true
 
   $scope.listJournies = () => {
     JourneyFactory.getJournies()
@@ -15,6 +15,11 @@ app.controller('JourneyCtrl', function(
       console.log('hello data?', data)
       $scope.journies = data
     })
+  }
+
+  $scope.startJourney = () => {
+    console.log("working")
+    $location.url('/moon')
   }
 
 
