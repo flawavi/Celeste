@@ -2,6 +2,7 @@
 
 app.controller("CommandDeckCtrl", function(
   $scope,
+  $window,
   $location,
   AuthFactory,
   JourneyFactory,
@@ -31,5 +32,8 @@ app.controller("CommandDeckCtrl", function(
       console.log("profile deleted")
       $location.url("/login")
     })
+  }
+  $scope.startJourney = () => {
+    $window.location.href = '/#/journey'
   }
 })

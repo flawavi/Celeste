@@ -1,24 +1,24 @@
 'use strict'
 
-app.controller('MoonCtrl', function(
+app.controller('DestinationCtrl', function(
   $scope,
   $window,
   $location,
   TriviaFactory,
   JourneyFactory,
-  CelesteFactory
+  CelesteFactory,
+  ExplorerFactory
   ){
 
   CelesteFactory.getLessons()
-  .then(lessons => {
-    console.log(lessons)
-    $scope.lessons = lessons
-    $scope.lesson1 = lessons[0].lesson
-  })
+  .then(data => {
+    console.log(data)
+    })
+    // $scope.lesson1 = lessons[8].lesson
 
   JourneyFactory.getJournies()
   .then(journies => {
-    var journeyID = journies[0].journeyID
+    var journeyID = journies[8].journeyID
     TriviaFactory.getTriviaByJourneyID(journeyID)
     .then(data => {
       console.log(data)
@@ -36,7 +36,7 @@ app.controller('MoonCtrl', function(
       $scope.answer5 = $scope.answers[4]
     })
   })
-  $scope.nextDestination = () => {
-    $window.location.href = '/#/mars'
+  $scope.theEnd = () => {
+    $window.location.href = '/#/theend'
   }
 })

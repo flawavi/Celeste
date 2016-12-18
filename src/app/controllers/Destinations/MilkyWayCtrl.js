@@ -2,6 +2,7 @@
 
 app.controller('MilkyWayCtrl', function(
   $scope,
+  $window,
   $location,
   TriviaFactory,
   JourneyFactory,
@@ -13,6 +14,7 @@ app.controller('MilkyWayCtrl', function(
   .then(lessons => {
     console.log(lessons)
     $scope.lessons = lessons
+    console.log($scope.lessons)
     $scope.lesson1 = lessons[7].lesson
   })
 
@@ -36,4 +38,7 @@ app.controller('MilkyWayCtrl', function(
       $scope.answer5 = $scope.answers[4]
     })
   })
+  $scope.nextDestination = () => {
+    $window.location.href = '/#/andromeda'
+  }
 })

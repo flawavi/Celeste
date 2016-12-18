@@ -14,7 +14,7 @@ const redirectCurrentUser = AuthFactory => AuthFactory.currentUser().then(user =
   if (user) throw new Error('CURRENT_USER')
 })
 
-app.config(function($routeProvider){
+app.config(function($routeProvider, $routeParams){
   $routeProvider
   .when('/', {
     templateUrl: 'partials/login.html',
@@ -79,6 +79,14 @@ app.config(function($routeProvider){
   .when('/andromeda', {
     templateUrl: 'partials/andromeda.html',
     controller: 'AndromedaCtrl'
+  })
+  .when('/theend', {
+    templateUrl: 'partials/theend.html',
+    controller: 'TheEndCtrl'
+  })
+  .when('/destination/:id', {
+    templateUrl: 'partials/destination.html',
+    controller: 'DestinationCtrl'
   })
   .otherwise('/');
 });

@@ -2,6 +2,7 @@
 
 app.controller('TheOortCloudCtrl', function(
   $scope,
+  $window,
   $location,
   TriviaFactory,
   JourneyFactory,
@@ -36,4 +37,7 @@ app.controller('TheOortCloudCtrl', function(
       $scope.answer5 = $scope.answers[4]
     })
   })
+  $scope.nextDestination = () => {
+    $window.location.href = '/#/alphacentauri'
+  }
 })

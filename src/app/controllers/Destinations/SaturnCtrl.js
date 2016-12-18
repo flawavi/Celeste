@@ -2,6 +2,7 @@
 
 app.controller('SaturnCtrl', function(
   $scope,
+  $window,
   $location,
   TriviaFactory,
   JourneyFactory,
@@ -36,4 +37,7 @@ app.controller('SaturnCtrl', function(
 
     })
   })
+    $scope.nextDestination = () => {
+    $window.location.href = '/#/sun'
+  }
 })
