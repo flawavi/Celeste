@@ -16,6 +16,15 @@ app.controller('DestinationCtrl', function(
     $scope.destination = data.map(d => d.journeyID)
     $scope.lessons = data.map(d => d.lesson)
     console.log('destination', $scope.destination, "lessons", $scope.lessons)
+    $scope.moonLesson = $scope.lessons[0]
+    $scope.marsLesson = $scope.lessons[1]
+    $scope.jupiterLesson = $scope.lessons[2]
+    $scope.saturnLesson = $scope.lessons[3]
+    $scope.sunLesson = $scope.lessons[4]
+    $scope.oortcloudLesson = $scope.lessons[5]
+    $scope.alphacentauriLesson = $scope.lessons[6]
+    $scope.milkywayLesson = $scope.lessons[7]
+    $scope.andromedaLesson = $scope.lessons[8]
   })
 
   $scope.nextDestination = (currentDestination) => {
