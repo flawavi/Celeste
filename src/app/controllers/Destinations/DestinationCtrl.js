@@ -4,6 +4,7 @@ app.controller('DestinationCtrl', function(
   $scope,
   $window,
   $location,
+  $routeParams,
   TriviaFactory,
   JourneyFactory,
   CelesteFactory,
@@ -12,13 +13,19 @@ app.controller('DestinationCtrl', function(
 
   CelesteFactory.getLessons()
   .then(data => {
-    console.log(data)
-    })
-    // $scope.lesson1 = lessons[8].lesson
+    $scope.destination = data.map(d => d.journeyID)
+    $scope.lessons = data.map(d => d.lesson)
+    console.log('destination', $scope.destination, "lessons", $scope.lessons)
+  })
+
+  $scope.nextDestination = (currentDestination) => {
+    currentDestination = $routeParams + 1
+    $location.url(`/destination/${currentDestination}`)
+  }
 
   JourneyFactory.getJournies()
   .then(journies => {
-    var journeyID = journies[8].journeyID
+    var journeyID = journies[6].journeyID
     TriviaFactory.getTriviaByJourneyID(journeyID)
     .then(data => {
       console.log(data)
@@ -36,7 +43,9 @@ app.controller('DestinationCtrl', function(
       $scope.answer5 = $scope.answers[4]
     })
   })
+
   $scope.theEnd = () => {
     $window.location.href = '/#/theend'
   }
+
 })
