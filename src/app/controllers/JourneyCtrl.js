@@ -18,12 +18,9 @@ app.controller('JourneyCtrl', function(
   }
 
   $scope.startJourney = () => {
-    console.log("working")
     $location.url('/moon')
   }
 
-
-  // $scope.explorer = ExplorerFactory.getExplorerById(explorerId)
 AuthFactory.currentUser().then(user => {
   console.log(user.uid)
     ExplorerFactory.getExplorerById(user.uid)

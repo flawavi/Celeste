@@ -2,13 +2,13 @@
 
 app.controller('MarsCtrl', function(
   $scope,
+  $window,
   $location,
   TriviaFactory,
   JourneyFactory,
   CelesteFactory,
   ExplorerFactory
   ){
-  $scope.test = 'testing'
 
   CelesteFactory.getLessons()
   .then(lessons => {
@@ -37,4 +37,7 @@ app.controller('MarsCtrl', function(
       $scope.answer5 = $scope.answers[4]
     })
   })
+  $scope.nextDestination = () => {
+    $window.location.href = '/#/jupiter'
+  }
 })

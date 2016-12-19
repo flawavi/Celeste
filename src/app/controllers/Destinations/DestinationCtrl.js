@@ -2,6 +2,7 @@
 
 app.controller('DestinationCtrl', function(
   $scope,
+  $window,
   $location,
   $routeParams,
   TriviaFactory,
@@ -42,4 +43,9 @@ app.controller('DestinationCtrl', function(
       $scope.answer5 = $scope.answers[4]
     })
   })
+
+  $scope.theEnd = () => {
+    $window.location.href = '/#/theend'
+  }
+
 })

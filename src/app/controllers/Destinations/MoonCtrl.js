@@ -36,5 +36,7 @@ app.controller('MoonCtrl', function(
       $scope.answer5 = $scope.answers[4]
     })
   })
-
+  $scope.nextDestination = () => {
+    $window.location.href = '/#/mars'
+  }
 })
