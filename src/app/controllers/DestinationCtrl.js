@@ -1,8 +1,10 @@
 'use strict'
 
-app.controller('JupiterCtrl', function(
+app.controller('DestinationCtrl', function(
   $scope,
+  $window,
   $location,
+  $routeParams,
   TriviaFactory,
   JourneyFactory,
   CelesteFactory,
@@ -10,15 +12,20 @@ app.controller('JupiterCtrl', function(
   ){
 
   CelesteFactory.getLessons()
-  .then(lessons => {
-    console.log(lessons)
-    $scope.lessons = lessons
-    $scope.lesson1 = lessons[4].lesson
+  .then(data => {
+    $scope.destination = data.map(d => d.journeyID)
+    $scope.lessons = data.map(d => d.lesson)
+    console.log('destination', $scope.destination, "lessons", $scope.lessons)
   })
+
+  $scope.nextDestination = (currentDestination) => {
+    currentDestination = $routeParams + 1
+    $location.url(`/destination/${currentDestination}`)
+  }
 
   JourneyFactory.getJournies()
   .then(journies => {
-    var journeyID = journies[4].journeyID
+    var journeyID = journies[6].journeyID
     TriviaFactory.getTriviaByJourneyID(journeyID)
     .then(data => {
       console.log(data)
@@ -36,4 +43,9 @@ app.controller('JupiterCtrl', function(
       $scope.answer5 = $scope.answers[4]
     })
   })
+
+  $scope.theEnd = () => {
+    $window.location.href = '/#/theend'
+  }
+
 })

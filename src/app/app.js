@@ -80,6 +80,10 @@ app.config(function($routeProvider){
     templateUrl: 'partials/andromeda.html',
     controller: 'AndromedaCtrl'
   })
+  .when('/destination', {
+    templateUrl: 'partials/destination.html',
+    controller: 'DestinationCtrl'
+  })
   .otherwise('/');
 });
 
