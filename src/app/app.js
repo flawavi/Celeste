@@ -80,13 +80,10 @@ app.config(function($routeProvider, $routeParams){
     templateUrl: 'partials/andromeda.html',
     controller: 'AndromedaCtrl'
   })
-<<<<<<< Updated upstream
   .when('/theend', {
     templateUrl: 'partials/theend.html',
     controller: 'TheEndCtrl'
   })
-=======
->>>>>>> Stashed changes
   .when('/destination/:id', {
     templateUrl: 'partials/destination.html',
     controller: 'DestinationCtrl'
