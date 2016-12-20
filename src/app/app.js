@@ -14,7 +14,7 @@ const redirectCurrentUser = AuthFactory => AuthFactory.currentUser().then(user =
   if (user) throw new Error('CURRENT_USER')
 })
 
-app.config(function($routeProvider, $routeParams){
+app.config(function($routeProvider){
   $routeProvider
   .when('/', {
     templateUrl: 'partials/login.html',

@@ -18,14 +18,17 @@ app.controller('DestinationCtrl', function(
     console.log('destination', $scope.destination, "lessons", $scope.lessons)
   })
 
-  $scope.nextDestination = (currentDestination) => {
-    currentDestination = $routeParams + 1
-    $location.url(`/destination/${currentDestination}`)
+  let journeyID = $routeParams.id
+  console.log($routeParams.id)
+  $scope.nextDestination = (nextDestination) => {
+    nextDestination = $routeParams + 1
+    $location.url(`/destination/${nextDestination}`)
   }
+
 
   JourneyFactory.getJournies()
   .then(journies => {
-    var journeyID = journies[6].journeyID
+    console.log(journies)
     TriviaFactory.getTriviaByJourneyID(journeyID)
     .then(data => {
       console.log(data)
