@@ -50,7 +50,20 @@ app.config(function($routeProvider){
   })
   .when('/destination/:id', {
     templateUrl: 'partials/destination.html',
-    controller: 'DestinationCtrl'
+    controller: 'DestinationCtrl',
+    resolve: {
+      id: function ($q, $route) {
+          var deferred = $q.defer(),
+              id = parseInt($route.current.params.id, 10);
+
+          if (!isNaN(id)) {
+              deferred.resolve(id);
+          } else {
+              deferred.reject('Id is not a number');
+          }
+          return deferred.promise;
+      }
+    }
   })
   .otherwise('/');
 });

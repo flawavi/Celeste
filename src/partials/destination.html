@@ -1,6 +1,6 @@
 <div>
 
-  <center><h3 class="celesteText">Let's talk about the heart of our solar system: The Sun</h3></center>
+  <center><h3 class="celesteText">Topic: {{topic}}</h3></center>
 
 
 </div>
@@ -13,7 +13,7 @@
 
 <div class="container-fluid">
   <div class="col-sm-6">
-    <h6 class="celesteText">Here are a bunch of questions about Your Destination.</h6>
+    <h6 class="celesteText">Here are a bunch of questions related to {{topic}}</h6>
     <div>
       <ol>
         <li>{{question1}}</li>
@@ -40,4 +40,7 @@
 
 <div>
   <button class="btn btn-success" ng-click="nextDestination(id)">Next Destination</button>
+</div>
+<div>
+  <button class="btn btn-warning" ng-click="prevDestination(id)">Previous Destination</button>
 </div>
