@@ -20,7 +20,6 @@ app.controller('DestinationCtrl', function(
       $scope.topic = journey.destination
     })
 
-
   CelesteFactory.getLessons()
   .then(data => {
     $scope.destination = data.map(d => d.journeyID)
@@ -28,15 +27,6 @@ app.controller('DestinationCtrl', function(
     console.log('destination', $scope.destination, "lessons", $scope.lessons)
   })
 
-
-  $scope.nextDestination = nextDestination => {
-    nextDestination = parseInt($route.current.params.id, 10) + 1
-    $location.url(`/destination/${nextDestination}`)
-  }
-  $scope.prevDestination = prevDestination => {
-    prevDestination = parseInt($route.current.params.id, 10) - 1
-    $location.url(`/destination/${prevDestination}`)
-  }
 
   let journeyID = $routeParams.id
   TriviaFactory.getTriviaByJourneyID(journeyID)
@@ -56,8 +46,21 @@ app.controller('DestinationCtrl', function(
     $scope.answer5 = $scope.answers[4]
   })
 
-  $scope.theEnd = () => {
-    $window.location.href = '/#/theend'
+
+  $scope.nextDestination = nextDestination => {
+    if(id === 9){
+      nextDestination = "/theend"
+      $location.url(`${nextDestination}`)
+    }
+    else {
+      nextDestination = id + 1
+      $location.url(`/destination/${nextDestination}`)
+    }
+
+  }
+  $scope.prevDestination = prevDestination => {
+    prevDestination = id - 1
+    $location.url(`/destination/${prevDestination}`)
   }
 
 })

@@ -18,7 +18,7 @@ app.controller('JourneyCtrl', function(
   }
 
   $scope.startJourney = () => {
-    $location.url('/moon')
+    $location.url('/destination/1')
   }
 
 AuthFactory.currentUser().then(user => {
