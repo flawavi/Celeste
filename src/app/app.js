@@ -32,7 +32,7 @@ app.config(function($routeProvider){
     templateUrl: 'partials/createExplorer.html',
     controller: 'CreateExplorerCtrl'
   })
-  .when('/command_deck', {
+  .when('/command_deck/:userId', {
     templateUrl: 'partials/commandDeck.html',
     controller: 'CommandDeckCtrl'
   })

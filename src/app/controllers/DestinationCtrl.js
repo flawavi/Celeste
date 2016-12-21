@@ -22,7 +22,7 @@ app.controller('DestinationCtrl', function(
 
   CelesteFactory.getLessons()
   .then(data => {
-    $scope.destination = data.map(d => d.journeyID)
+    // $scope.destination = data.map(d => d.journeyID)
     $scope.lessons = data.map(d => d.lesson)
     console.log('destination', $scope.destination, "lessons", $scope.lessons)
   })
@@ -44,7 +44,38 @@ app.controller('DestinationCtrl', function(
     $scope.answer3 = $scope.answers[2]
     $scope.answer4 = $scope.answers[3]
     $scope.answer5 = $scope.answers[4]
+    console.log($scope.answers)
   })
+
+  $scope.userAnswers = {
+    answer1: "",
+    answer2: "",
+    answer3: "",
+    answer4: "",
+    answer5: ""
+  }
+
+  $scope.postAnswers = () => {
+
+    if($scope.userAnswers.answer1 >= .9 * $scope.answer1 || $scope.userAnswers.answer1 <= 1.1 * $scope.answer1 || $scope.userAnswers.answer1 === $scope.answer1) {
+      console.log(`Question 1 is correct.`)
+    }
+    else if ($scope.userAnswers.answer2 >= .9 * $scope.answer2 || $scope.userAnswers.answer2 <= 1.1 * $scope.answer2 || $scope.userAnswers.answer2 === $scope.answer2) {
+      console.log(`Question 2 is correct.`)
+      }
+    else if ($scope.userAnswers.answer3 >= .9 * $scope.answer3 || $scope.userAnswers.answer3 <= 1.1 * $scope.answer3 || $scope.userAnswers.answer3 === $scope.answer3) {
+      console.log(`Question 3 is correct.`)
+    }
+    else if ($scope.userAnswers.answer3 >= .9 * $scope.answer4 || $scope.userAnswers.answer4 <= 1.1 * $scope.answer4 || $scope.userAnswers.answer4 === $scope.answer4) {
+      console.log(`Question 4 is correct.`)
+    }
+    else if ($scope.userAnswers.answer5 >= .9 * $scope.answer5 || $scope.userAnswers.answer5 <= 1.1 * $scope.answer5 || $scope.userAnswers.answer5 === $scope.answer5) {
+      console.log(`Question 5 is correct.`)
+    }
+    else {
+      console.log(`At least one of your answers in incorrect.`)
+    }
+  }
 
 
   $scope.nextDestination = nextDestination => {
