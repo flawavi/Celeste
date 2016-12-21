@@ -15,13 +15,15 @@ app.controller("CommandDeckCtrl", function(
     $scope.journies = data
   })
 
+  console.log(AuthFactory.getUser())
+
   AuthFactory.currentUser()
   .then(data => {
     console.log(data)
     ExplorerFactory.getExplorerById(data.uid)
-    .then(explorer => {
-      console.log(explorer)
-      $scope.explorer = explorer
+    .then(explorerdata => {
+      console.log(explorerdata)
+      $scope.explorer = explorerdata
     })
   })
 
