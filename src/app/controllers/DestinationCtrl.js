@@ -27,8 +27,8 @@ app.controller('DestinationCtrl', function(
     console.log('destination', $scope.destination, "lessons", $scope.lessons)
   })
 
-
   let journeyID = $routeParams.id
+
   TriviaFactory.getTriviaByJourneyID(journeyID)
   .then(data => {
     console.log(data)
@@ -89,6 +89,7 @@ app.controller('DestinationCtrl', function(
     }
 
   }
+
   $scope.prevDestination = prevDestination => {
     prevDestination = id - 1
     $location.url(`/destination/${prevDestination}`)
