@@ -8,7 +8,7 @@
 <!-- <div>{{lessons}}</div> -->
 <div class="celesteText">
   <h3>Here is your first lesson</h3>
-  <div>{{lesson1}}</div>
+  <div>{{lesson}}</div>
 </div>
 
 <div class="container-fluid">
@@ -16,11 +16,11 @@
     <h6 class="celesteText">Here are a bunch of questions related to {{topic}}</h6>
     <div>
       <ol>
-        <li>{{question1}}</li>
-        <li>{{question2}}</li>
-        <li>{{question3}}</li>
-        <li>{{question4}}</li>
-        <li>{{question5}}</li>
+        <li ng-show="active">{{question1}}</li>
+        <li ng-show="">{{question2}}</li>
+        <li ng-show="">{{question3}}</li>
+        <li ng-show="">{{question4}}</li>
+        <li ng-show="">{{question5}}</li>
       </ol>
     </div>
   </div>
