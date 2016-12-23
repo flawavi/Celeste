@@ -13,6 +13,7 @@ app.controller('DestinationCtrl', function(
   ){
 
   let id = parseInt($route.current.params.id, 10)
+  $scope.active = true
 
   JourneyFactory.getJourneyById(id)
     .then(journey => {
