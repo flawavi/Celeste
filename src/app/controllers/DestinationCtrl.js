@@ -25,7 +25,7 @@ app.controller('DestinationCtrl', function(
   .then(data => {
     // $scope.destination = data.map(d => d.journeyID)
     $scope.lessons = data.map(d => d.lesson)
-    console.log('destination', $scope.destination, "lessons", $scope.lessons)
+    $scope.lesson = $scope.lessons[id - 1]
   })
 
   let journeyID = $routeParams.id
@@ -92,6 +92,7 @@ app.controller('DestinationCtrl', function(
   }
 
   $scope.prevDestination = prevDestination => {
+    if(id <= 1) return
     prevDestination = id - 1
     $location.url(`/destination/${prevDestination}`)
   }
