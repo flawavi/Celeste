@@ -12,27 +12,32 @@ app.controller('DestinationCtrl', function(
   ExplorerFactory
   ){
 
-  let id = parseInt($route.current.params.id, 10)
+  let id = parseInt($route.current.params.id, 10),
+      journeyID = $routeParams.id
+
   $scope.active = true
+  $scope.hide = true
+  $scope.quiz = false
+  $scope.currentLesson = true
 
   JourneyFactory.getJourneyById(id)
     .then(journey => {
-      console.log(journey)
       $scope.topic = journey.destination
     })
 
-  CelesteFactory.getLessons()
-  .then(data => {
+  $scope.getLesson = () => {
+    $scope.hide = false
+    CelesteFactory.getLessons()
+    .then(data => {
     // $scope.destination = data.map(d => d.journeyID)
     $scope.lessons = data.map(d => d.lesson)
     $scope.lesson = $scope.lessons[id - 1]
-  })
+    })
+  }
 
-  let journeyID = $routeParams.id
 
   TriviaFactory.getTriviaByJourneyID(journeyID)
   .then(data => {
-    console.log(data)
     $scope.questions = [data[0].question, data[1].question, data[2].question, data[3].question, data[4].question]
     $scope.question1 = $scope.questions[0]
     $scope.question2 = $scope.questions[1]
@@ -45,7 +50,6 @@ app.controller('DestinationCtrl', function(
     $scope.answer3 = $scope.answers[2]
     $scope.answer4 = $scope.answers[3]
     $scope.answer5 = $scope.answers[4]
-    console.log($scope.answers)
   })
 
   $scope.userAnswers = {
@@ -56,21 +60,26 @@ app.controller('DestinationCtrl', function(
     answer5: ""
   }
 
+  $scope.takeQuiz = () => {
+    $scope.quiz = true
+    $scope.currentLesson = false
+  }
+
   $scope.postAnswers = () => {
 
-    if($scope.userAnswers.answer1 >= .9 * $scope.answer1 || $scope.userAnswers.answer1 <= 1.1 * $scope.answer1 || $scope.userAnswers.answer1 === $scope.answer1) {
+    if($scope.userAnswers.answer1 >= 0.9 * $scope.answer1 || $scope.userAnswers.answer1 <= 1.1 * $scope.answer1 || $scope.userAnswers.answer1 === $scope.answer1) {
       console.log(`Question 1 is correct.`)
     }
-    else if ($scope.userAnswers.answer2 >= .9 * $scope.answer2 || $scope.userAnswers.answer2 <= 1.1 * $scope.answer2 || $scope.userAnswers.answer2 === $scope.answer2) {
+    else if ($scope.userAnswers.answer2 >= 0.9 * $scope.answer2 || $scope.userAnswers.answer2 <= 1.1 * $scope.answer2 || $scope.userAnswers.answer2 === $scope.answer2) {
       console.log(`Question 2 is correct.`)
       }
-    else if ($scope.userAnswers.answer3 >= .9 * $scope.answer3 || $scope.userAnswers.answer3 <= 1.1 * $scope.answer3 || $scope.userAnswers.answer3 === $scope.answer3) {
+    else if ($scope.userAnswers.answer3 >= 0.9 * $scope.answer3 || $scope.userAnswers.answer3 <= 1.1 * $scope.answer3 || $scope.userAnswers.answer3 === $scope.answer3) {
       console.log(`Question 3 is correct.`)
     }
-    else if ($scope.userAnswers.answer3 >= .9 * $scope.answer4 || $scope.userAnswers.answer4 <= 1.1 * $scope.answer4 || $scope.userAnswers.answer4 === $scope.answer4) {
+    else if ($scope.userAnswers.answer3 >= 0.9 * $scope.answer4 || $scope.userAnswers.answer4 <= 1.1 * $scope.answer4 || $scope.userAnswers.answer4 === $scope.answer4) {
       console.log(`Question 4 is correct.`)
     }
-    else if ($scope.userAnswers.answer5 >= .9 * $scope.answer5 || $scope.userAnswers.answer5 <= 1.1 * $scope.answer5 || $scope.userAnswers.answer5 === $scope.answer5) {
+    else if ($scope.userAnswers.answer5 >= 0.9 * $scope.answer5 || $scope.userAnswers.answer5 <= 1.1 * $scope.answer5 || $scope.userAnswers.answer5 === $scope.answer5) {
       console.log(`Question 5 is correct.`)
     }
     else {

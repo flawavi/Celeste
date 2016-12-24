@@ -9,6 +9,7 @@ app.controller("NavCtrl", function(
   ){
 
   $scope.isLoggedIn = false
+
   AuthFactory.currentUser().then(user => {
     ExplorerFactory.getExplorerById(user.uid)
     .then(explorer => {
