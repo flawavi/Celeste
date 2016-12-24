@@ -1,17 +1,22 @@
 <div>
 
-  <center><h3 class="celesteText">Topic: {{topic}}</h3></center>
+  <center><h3 class="celesteText">Destination: {{topic}}</h3></center>
 
 
 </div>
 
 <!-- <div>{{lessons}}</div> -->
-<div class="celesteText">
-  <h3>Here is your first lesson</h3>
-  <div>{{lesson}}</div>
+<div>
+  <h3 class="celesteText" ng-show="hide">Carefully read the following lesson, and prepare to answer some questions.</h3>
+  <p class="lessonText" ng-show="currentLesson">{{lesson}}</p>
+  <button ng-show="hide" class="btn btn-success" ng-click="getLesson()">Start Lesson</button>
 </div>
 
-<div class="container-fluid">
+  <div>
+    <button class="btn btn-warning" ng-click="takeQuiz()" ng-show="currentLesson">Take Quiz</button>
+  </div>
+
+<div class="container-fluid" ng-show="quiz">
   <div class="col-sm-6">
     <h6 class="celesteText">Here are a bunch of questions related to {{topic}}</h6>
     <div>
@@ -27,28 +32,28 @@
   <div class="col-sm-6">
     <h6 class="celesteText">Here are the answers about {{topic}}</h6>
     <div>
-      <select>
+<!--       <select>
         <option value="1">{{options.option1}}</option>
         <option value="2">{{options.option2}}</option>
         <option value="3">{{options.option3}}</option>
         <option value="4">{{options.option4}}</option>
         <option value="5">{{options.option5}}</option>
-      </select>
-      <!-- <div>
+      </select> -->
+      <div ng-show="active">
         <input type="text" name="answer" placeholder="question 1" ng-model="userAnswers.answer1">
       </div>
-      <div>
+      <div ng-show="">
         <input type="text" name="answer" placeholder="question 2" ng-model="userAnswers.answer2">
       </div>
-      <div>
+      <div ng-show="">
         <input type="text" name="answer" placeholder="question 3" ng-model="userAnswers.answer3">
       </div>
-      <div>
+      <div ng-show="">
         <input type="text" name="answer" placeholder="question 4" ng-model="userAnswers.answer4">
       </div>
-      <div>
+      <div ng-show="">
         <input type="text" name="answer" placeholder="question 5" ng-model="userAnswers.answer5">
-      </div> -->
+      </div>
     </div>
     <div>
       <button class="btn btn-success" ng-click="postAnswers()">Submit</button>
