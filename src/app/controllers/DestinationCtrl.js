@@ -39,13 +39,11 @@ app.controller('DestinationCtrl', function(
   QuestionsFactory.getQuestionsByJourneyID(journeyID)
   .then(data => {
     $scope.questionIDs = data.map(d => d.questionsID)
-    for(var i = 0; i < $scope.questionIDs.length; i++){
-      AnswersFactory.getAnswersByQuestionsID($scope.questionIDs[i])
-      .then(data => {
-        $scope.answers = data[0]
-        console.log($scope.answers)
-      })
-    }
+    $scope.questionIDs.map(id => AnswersFactory.getAnswersByQuestionsID(id)
+    .then(data => {
+      $scope.answers = data[0]
+      console.log($scope.answers)
+    }))
   })
 
 
