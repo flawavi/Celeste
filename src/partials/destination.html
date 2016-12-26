@@ -32,14 +32,14 @@
   <div class="col-sm-6">
     <h6 class="celesteText">Here are the answers about {{topic}}</h6>
     <div>
-<!--       <select>
-        <option value="1">{{options.option1}}</option>
-        <option value="2">{{options.option2}}</option>
-        <option value="3">{{options.option3}}</option>
-        <option value="4">{{options.option4}}</option>
-        <option value="5">{{options.option5}}</option>
-      </select> -->
-      <div ng-show="active">
+      <select>
+        <option value="1">{{fakeAnswers.fakeAnswer1}}</option>
+        <option value="2">{{fakeAnswers.fakeAnswer2}}</option>
+        <option value="3">{{fakeAnswers.fakeAnswer3}}</option>
+        <option value="4">{{answer1}}</option>
+        <option value="5">{{fakeAnswers.fakeAnswer4}}</option>
+      </select>
+      <!-- <div ng-show="active">
         <input type="text" name="answer" placeholder="question 1" ng-model="userAnswers.answer1">
       </div>
       <div ng-show="">
@@ -53,7 +53,7 @@
       </div>
       <div ng-show="">
         <input type="text" name="answer" placeholder="question 5" ng-model="userAnswers.answer5">
-      </div>
+      </div> -->
     </div>
     <div>
       <button class="btn btn-success" ng-click="postAnswers()">Submit</button>

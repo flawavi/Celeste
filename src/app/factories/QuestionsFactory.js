@@ -1,10 +1,10 @@
 "use strict"
 
-app.factory("TriviaFactory", function($q, $http){
+app.factory("QuestionsFactory", function($q, $http){
 
-  let getAllTrivia = () => {
+  let getAllQuestions = () => {
     return $q((resolve, reject) => {
-    $http.get(`http://localhost:5000/trivia.json`)
+    $http.get(`http://localhost:5000/questions.json`)
     .success((obj) => {
       resolve(obj)
     })
@@ -14,9 +14,9 @@ app.factory("TriviaFactory", function($q, $http){
     })
   }
 
-  let getTriviaByJourneyID = (id) => {
+  let getQuestionsByJourneyID = (id) => {
     return $q((resolve, reject) => {
-    $http.get(`http://localhost:5000/trivia/${id}`)
+    $http.get(`http://localhost:5000/questions/${id}`)
     .success(obj => {
       resolve(obj)
     })
@@ -26,5 +26,5 @@ app.factory("TriviaFactory", function($q, $http){
     })
   }
 
-  return {getAllTrivia, getTriviaByJourneyID}
+  return {getAllQuestions, getQuestionsByJourneyID}
 })

@@ -6,8 +6,9 @@ app.controller('DestinationCtrl', function(
   $window,
   $location,
   $routeParams,
-  TriviaFactory,
+  QuestionsFactory,
   JourneyFactory,
+  AnswersFactory,
   CelesteFactory,
   ExplorerFactory
   ){
@@ -35,22 +36,45 @@ app.controller('DestinationCtrl', function(
     })
   }
 
-
-  TriviaFactory.getTriviaByJourneyID(journeyID)
+  QuestionsFactory.getQuestionsByJourneyID(journeyID)
   .then(data => {
+    $scope.questionIDs = data.map(d => d.questionsID)
+    for(var i = 0; i < $scope.questionIDs.length; i++){
+      AnswersFactory.getAnswersByQuestionsID($scope.questionIDs[i])
+      .then(data => {
+        $scope.answers = data[0]
+        console.log($scope.answers)
+      })
+    }
+  })
+
+
+  QuestionsFactory.getQuestionsByJourneyID(journeyID)
+  .then(data => {
+    console.log(data)
     $scope.questions = [data[0].question, data[1].question, data[2].question, data[3].question, data[4].question]
     $scope.question1 = $scope.questions[0]
     $scope.question2 = $scope.questions[1]
     $scope.question3 = $scope.questions[2]
     $scope.question4 = $scope.questions[3]
     $scope.question5 = $scope.questions[4]
-    $scope.answers = [data[0].answer, data[1].answer, data[2].answer, data[3].answer, data[4].answer]
-    $scope.answer1 = $scope.answers[0]
-    $scope.answer2 = $scope.answers[1]
-    $scope.answer3 = $scope.answers[2]
-    $scope.answer4 = $scope.answers[3]
-    $scope.answer5 = $scope.answers[4]
+    // $scope.answers = [data[0].answer, data[1].answer, data[2].answer, data[3].answer, data[4].answer]
+    // $scope.answer1 = $scope.answers[0]
+    // $scope.answer2 = $scope.answers[1]
+    // $scope.answer3 = $scope.answers[2]
+    // $scope.answer4 = $scope.answers[3]
+    // $scope.answer5 = $scope.answers[4]
   })
+
+  if(id === 1){
+    $scope.fakeAnswers = {
+      fakeAnswer1: "test1",
+      fakeAnswer2: "test2",
+      fakeAnswer3: "test3",
+      fakeAnswer4: "test4",
+      fakeAnswer5: "test5"
+    }
+  }
 
   $scope.userAnswers = {
     answer1: "",
@@ -97,7 +121,6 @@ app.controller('DestinationCtrl', function(
       nextDestination = id + 1
       $location.url(`/destination/${nextDestination}`)
     }
-
   }
 
   $scope.prevDestination = prevDestination => {
