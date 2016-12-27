@@ -32,9 +32,21 @@ app.config(function($routeProvider){
     templateUrl: 'partials/createExplorer.html',
     controller: 'CreateExplorerCtrl'
   })
-  .when('/command_deck/:userId', {
+  .when('/command_deck/:id', {
     templateUrl: 'partials/commandDeck.html',
-    controller: 'CommandDeckCtrl'
+    controller: 'CommandDeckCtrl',
+    resolve: {
+      id: function ($q, $route) {
+        var deferred = $q.defer(),
+            id = $route.current.params.id
+            if(isNaN(id)) {
+              deferred.resolve(id)
+            } else {
+              deferred.reject("There's something wrong with your ID")
+            }
+            return deferred.promise
+      }
+    }
   })
   .when('/journey', {
     templateUrl: 'partials/journey.html',
@@ -61,7 +73,7 @@ app.config(function($routeProvider){
           } else {
               deferred.reject('Id is not a number');
           }
-          return deferred.promise;
+          return deferred.promise
       }
     }
   })
