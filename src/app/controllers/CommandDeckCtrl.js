@@ -5,9 +5,13 @@ app.controller("CommandDeckCtrl", function(
   $window,
   $location,
   AuthFactory,
+  $routeParams,
   JourneyFactory,
   ExplorerFactory
   ){
+
+  console.log(AuthFactory.getUser())
+  let id = $routeParams.id
 
   JourneyFactory.getJournies()
   .then(data => {
@@ -15,17 +19,13 @@ app.controller("CommandDeckCtrl", function(
     $scope.journies = data
   })
 
-  console.log(AuthFactory.getUser())
 
-  AuthFactory.currentUser()
-  .then(data => {
-    console.log(data)
-    ExplorerFactory.getExplorerById(data.uid)
+    ExplorerFactory.getExplorerById(id)
     .then(explorerdata => {
       console.log(explorerdata)
       $scope.explorer = explorerdata
     })
-  })
+
 
   $scope.deleteProfile = () => {
     alert("Are you sure you want to delete your profile?")

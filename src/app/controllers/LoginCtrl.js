@@ -10,21 +10,8 @@ app.controller('LoginCtrl', function($scope, $location, $window, AuthFactory, Ex
     email: "",
     password: ""
   }
-  $scope.register = () => {
-    AuthFactory.createUser({
-      email: $scope.account.email,
-      password: $scope.account.password
-    })
-    .then((userData)=>{
-      console.log("REGISTER IS WORKING", userData)
-      $scope.loginFirstTime()
-    },
-    (error) => {
-      console.log(error)
-    })
-  }
 
-    $scope.loginFirstTime = () => {
+    let loginFirstTime = () => {
     AuthFactory.loginUser({
       email: $scope.account.email,
       password: $scope.account.password
@@ -41,6 +28,21 @@ app.controller('LoginCtrl', function($scope, $location, $window, AuthFactory, Ex
     })
   }
 
+  $scope.register = () => {
+    AuthFactory.createUser({
+      email: $scope.account.email,
+      password: $scope.account.password
+    })
+    .then((userData)=>{
+      console.log("REGISTER IS WORKING", userData)
+      loginFirstTime()
+    },
+    (error) => {
+      console.log(error)
+    })
+  }
+
+
   $scope.login = () => {
     AuthFactory.loginUser({
       email: $scope.account.email,
@@ -48,7 +50,7 @@ app.controller('LoginCtrl', function($scope, $location, $window, AuthFactory, Ex
     })
     .then(userData => {
       if(userData) {
-        $window.location.href = "#/command_deck"
+        $window.location.href = `#/command_deck/${AuthFactory.getUser().uid}`
       console.log('USERDATA', userData)
       } else {
         $window.location.href = "#/login"

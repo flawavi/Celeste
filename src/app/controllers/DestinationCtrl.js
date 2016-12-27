@@ -6,11 +6,11 @@ app.controller('DestinationCtrl', function(
   $window,
   $location,
   $routeParams,
-  QuestionsFactory,
   JourneyFactory,
   AnswersFactory,
   CelesteFactory,
-  ExplorerFactory
+  ExplorerFactory,
+  QuestionsFactory
   ){
 
   let id = parseInt($route.current.params.id, 10),
@@ -63,16 +63,6 @@ app.controller('DestinationCtrl', function(
     // $scope.answer4 = $scope.answers[3]
     // $scope.answer5 = $scope.answers[4]
   })
-
-  if(id === 1){
-    $scope.fakeAnswers = {
-      fakeAnswer1: "test1",
-      fakeAnswer2: "test2",
-      fakeAnswer3: "test3",
-      fakeAnswer4: "test4",
-      fakeAnswer5: "test5"
-    }
-  }
 
   $scope.userAnswers = {
     answer1: "",
