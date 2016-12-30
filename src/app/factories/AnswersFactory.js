@@ -4,9 +4,9 @@ app.factory('AnswersFactory', function($q, $http){
 
   let service
 
-  let getAnswersByQuestionsID = (QuestionsID) => {
+  let getAnswersByJourneyID = (JourneyID) => {
     return $q ((resolve, reject) => {
-      $http.get(`http://localhost:5000/answers/${QuestionsID}`)
+      $http.get(`http://localhost:5000/answers/${JourneyID}`)
       .success(answers => {
         resolve(answers)
       })
@@ -16,6 +16,6 @@ app.factory('AnswersFactory', function($q, $http){
     })
   }
 
-  service = {getAnswersByQuestionsID}
+  service = {getAnswersByJourneyID}
   return service
 })
