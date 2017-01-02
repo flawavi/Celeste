@@ -13,6 +13,8 @@ app.controller('DestinationCtrl', function(
   QuestionsFactory
   ){
 
+
+  $scope.id = $routeParams.id
   let id = parseInt($route.current.params.id, 10),
       journeyID = $routeParams.id
 
@@ -39,19 +41,26 @@ app.controller('DestinationCtrl', function(
 
   AnswersFactory.getAnswersByJourneyID(journeyID)
   .then(data => {
-    console.log(data)
-    var answers = data.map(d => {
-      let answersObj = {
+    $scope.answers = data.map(d => {
+      return {
         answer: d.answer,
-        questionId: d.questionsID,
         answerId: d.answersID,
+        questionId: d.questionsID,
         correct: d.real
       }
-      $scope.answers = answers
-      console.log($scope.answers)
-      return $scope.answers
     })
-    return data
+    console.log($scope.answers)
+    $scope.realAnswers = data.filter(d => {
+      if(d.real === true){
+        return d.answer
+      }
+    })
+    $scope.fakeAnswers = data.filter(d => {
+      if(d.real === false){
+        return d.answer
+      }
+    })
+    console.log("real answers", $scope.realAnswers, "fake answers", $scope.fakeAnswers)
   })
 
   QuestionsFactory.getQuestionsByJourneyID(journeyID)

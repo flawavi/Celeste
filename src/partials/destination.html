@@ -1,6 +1,6 @@
 <div>
 
-  <center><h3 class="celesteText">Destination: {{topic}}</h3></center>
+  <center><h3 class="celesteText">Destination {{id}}: {{topic}}</h3></center>
 
 
 </div>
@@ -22,18 +22,18 @@
     <div>
       <ul ng-repeat="q in questions">
         <li>{{q.question}}</li>
-        <!-- <li class="question" ng-show="active">{{question1}}</li>
-        <li class="question" ng-show="">{{question2}}</li>
-        <li class="question" ng-show="">{{question3}}</li>
-        <li class="question" ng-show="">{{question4}}</li>
-        <li class="question" ng-show="">{{question5}}</li> -->
+          <li ng-repeat="a in answers">
+            <label for="quest_{{$parent.$index}}_answer_{{$index}}">
+              <input type="radio" id="quest_{{$parent.$index}}_answer_{{$index}}"
+               value="{{a.answer}}" name="answers" />{{ a.answer }}</label>
+          </li>
       </ul>
     </div>
   </div>
   <div class="col-sm-6">
-    <h6 class="celesteText">Here are the answers about {{topic}}</h6>
+    <h6 class="celesteText">Choose the best answer</h6>
     <div ng-repeat="a in answers">
-      <input type="checkbox" name="answers">
+      <p>{{a.answer}}</p>
 
     </div>
     <div>
@@ -51,3 +51,16 @@
 <div ng-hide="true">
   <button></button>
 </div>
+
+<!-- <ul class="unstyled">
+  <li ng-repeat="q in questions">
+   <strong class="question">{{ q.question }}</strong>
+   <ul class="unstyled" id="quest_{{$parent.$index}}"">
+    <li ng-repeat="a in answers">
+      <label class="isCorrect_{{answer.selected}}" for="quest_{{$parent.$index}}_answer_{{$index}}">
+        <input type="radio" id="quest_{{$parent.$index}}_answer_{{$index}}"
+        ng-model="answers[$parent.$index]" value="{{ answer.answerText }}"  name="quest_{{$parent.$index}}_answers" />{{ a.answer }}</label>
+    </li>
+   </ul>
+  </li>
+</ul> -->
