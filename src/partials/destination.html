@@ -1,6 +1,6 @@
 <div>
 
-  <center><h3 class="celesteText">Destination: {{topic}}</h3></center>
+  <center><h3 class="celesteText">Destination {{id}}: {{topic}}</h3></center>
 
 
 </div>
@@ -13,52 +13,28 @@
 </div>
 
   <div>
-    <button class="btn btn-warning" ng-click="takeQuiz()" ng-show="currentLesson">Take Quiz</button>
+    <button class="btn btn-warning" ng-click="takeQuiz()" ng-show="quizButton">Take Quiz</button>
   </div>
 
 <div class="container-fluid" ng-show="quiz">
   <div class="col-sm-6">
     <h6 class="celesteText">Here are a bunch of questions related to {{topic}}</h6>
     <div>
-      <ol>
-        <li ng-show="active">{{question1}}</li>
-        <li ng-show="">{{question2}}</li>
-        <li ng-show="">{{question3}}</li>
-        <li ng-show="">{{question4}}</li>
-        <li ng-show="">{{question5}}</li>
-      </ol>
+      <form class="quizForm">
+        <ul ng-repeat="q in questions">
+          <li>{{q.question}}</li>
+            <li ng-repeat="a in answers | filter: {questionId: q.questionsID}">
+              <label>
+                <input type="radio" value="{{a.answerId}}{{a.correct}}" name="question - {{q.questionsID}}" ng-model="selectedAnswer[q.questionsID]" /> {{a.answer}}</label>
+            </li>
+        </ul>
+        <div>
+          <button class="btn btn-success" ng-click="checkAnswers()">Submit</button>
+        </div>
+      </form>
     </div>
   </div>
-  <div class="col-sm-6">
-    <h6 class="celesteText">Here are the answers about {{topic}}</h6>
-    <div>
-      <select>
-        <option value="1">{{fakeAnswers.fakeAnswer1}}</option>
-        <option value="2">{{fakeAnswers.fakeAnswer2}}</option>
-        <option value="3">{{fakeAnswers.fakeAnswer3}}</option>
-        <option value="4">{{answer1}}</option>
-        <option value="5">{{fakeAnswers.fakeAnswer4}}</option>
-      </select>
-      <!-- <div ng-show="active">
-        <input type="text" name="answer" placeholder="question 1" ng-model="userAnswers.answer1">
-      </div>
-      <div ng-show="">
-        <input type="text" name="answer" placeholder="question 2" ng-model="userAnswers.answer2">
-      </div>
-      <div ng-show="">
-        <input type="text" name="answer" placeholder="question 3" ng-model="userAnswers.answer3">
-      </div>
-      <div ng-show="">
-        <input type="text" name="answer" placeholder="question 4" ng-model="userAnswers.answer4">
-      </div>
-      <div ng-show="">
-        <input type="text" name="answer" placeholder="question 5" ng-model="userAnswers.answer5">
-      </div> -->
-    </div>
-    <div>
-      <button class="btn btn-success" ng-click="postAnswers()">Submit</button>
-    </div>
-  </div>
+
 </div>
 
 <div>
@@ -70,3 +46,16 @@
 <div ng-hide="true">
   <button></button>
 </div>
+
+<!-- <ul class="unstyled">
+  <li ng-repeat="q in questions">
+   <strong class="question">{{ q.question }}</strong>
+   <ul class="unstyled" id="quest_{{$parent.$index}}"">
+    <li ng-repeat="a in answers">
+      <label class="isCorrect_{{answer.selected}}" for="quest_{{$parent.$index}}_answer_{{$index}}">
+        <input type="radio" id="quest_{{$parent.$index}}_answer_{{$index}}"
+        ng-model="answers[$parent.$index]" value="{{ answer.answerText }}"  name="quest_{{$parent.$index}}_answers" />{{ a.answer }}</label>
+    </li>
+   </ul>
+  </li>
+</ul> -->

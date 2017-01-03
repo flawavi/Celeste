@@ -32,21 +32,9 @@ app.config(function($routeProvider){
     templateUrl: 'partials/createExplorer.html',
     controller: 'CreateExplorerCtrl'
   })
-  .when('/command_deck/:id', {
+  .when('/command_deck', {
     templateUrl: 'partials/commandDeck.html',
-    controller: 'CommandDeckCtrl',
-    resolve: {
-      id: function ($q, $route) {
-        var deferred = $q.defer(),
-            id = $route.current.params.id
-            if(isNaN(id)) {
-              deferred.resolve(id)
-            } else {
-              deferred.reject("There's something wrong with your ID")
-            }
-            return deferred.promise
-      }
-    }
+    controller: 'CommandDeckCtrl'
   })
   .when('/journey', {
     templateUrl: 'partials/journey.html',
