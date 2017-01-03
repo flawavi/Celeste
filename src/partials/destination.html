@@ -25,7 +25,7 @@
           <li>{{q.question}}</li>
             <li ng-repeat="a in answers | filter: {questionId: q.questionsID}">
               <label>
-                <input type="radio" ng-value="{{a.correct}}" name="question - {{q.questionsID}}" ng-model="selectedAnswer.correct"/> {{a.answer}}</label>
+                <input type="radio" value="{{a.answerId}}{{a.correct}}" name="question - {{q.questionsID}}" ng-model="selectedAnswer[q.questionsID]" /> {{a.answer}}</label>
             </li>
         </ul>
         <div>

@@ -84,6 +84,7 @@ app.controller('DestinationCtrl', function(
   }
 
   $scope.selectedAnswer = {}
+
   $scope.checkAnswers = () => {
     console.log($scope.selectedAnswer)
   }
