@@ -13,33 +13,28 @@
 </div>
 
   <div>
-    <button class="btn btn-warning" ng-click="takeQuiz()" ng-show="currentLesson">Take Quiz</button>
+    <button class="btn btn-warning" ng-click="takeQuiz()" ng-show="quizButton">Take Quiz</button>
   </div>
 
 <div class="container-fluid" ng-show="quiz">
   <div class="col-sm-6">
     <h6 class="celesteText">Here are a bunch of questions related to {{topic}}</h6>
     <div>
-      <ul ng-repeat="q in questions">
-        <li>{{q.question}}</li>
-          <li ng-repeat="a in answers">
-            <label for="quest_{{$parent.$index}}_answer_{{$index}}">
-              <input type="radio" id="quest_{{$parent.$index}}_answer_{{$index}}"
-               value="{{a.answer}}" name="answers" />{{ a.answer }}</label>
-          </li>
-      </ul>
+      <form class="quizForm">
+        <ul ng-repeat="q in questions">
+          <li>{{q.question}}</li>
+            <li ng-repeat="a in answers | filter: {questionId: q.questionsID}">
+              <label>
+                <input type="radio" ng-value="{{a.correct}}" name="question - {{q.questionsID}}" ng-model="selectedAnswer.correct"/> {{a.answer}}</label>
+            </li>
+        </ul>
+        <div>
+          <button class="btn btn-success" ng-click="checkAnswers()">Submit</button>
+        </div>
+      </form>
     </div>
   </div>
-  <div class="col-sm-6">
-    <h6 class="celesteText">Choose the best answer</h6>
-    <div ng-repeat="a in answers">
-      <p>{{a.answer}}</p>
 
-    </div>
-    <div>
-      <button class="btn btn-success" ng-click="postAnswers()">Submit</button>
-    </div>
-  </div>
 </div>
 
 <div>

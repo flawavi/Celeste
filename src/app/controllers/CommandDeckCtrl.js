@@ -10,22 +10,19 @@ app.controller("CommandDeckCtrl", function(
   ExplorerFactory
   ){
 
-  console.log(AuthFactory.getUser())
-  let id = $routeParams.id
+  AuthFactory.currentUser().then(user => {
+    ExplorerFactory.getExplorerById(user.uid)
+    .then(explorer => {
+      // $scope.isLoggedIn = true
+      $scope.explorer = explorer
+    })
+  })
 
   JourneyFactory.getJournies()
   .then(data => {
     console.log('hello data?', data)
     $scope.journies = data
   })
-
-
-    ExplorerFactory.getExplorerById(id)
-    .then(explorerdata => {
-      console.log(explorerdata)
-      $scope.explorer = explorerdata
-    })
-
 
   $scope.deleteProfile = () => {
     alert("Are you sure you want to delete your profile?")

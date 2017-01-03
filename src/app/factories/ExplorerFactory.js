@@ -20,6 +20,7 @@ app.factory("ExplorerFactory", function($q, $http, AuthFactory){
     return $q((resolve, reject) => {
     $http.get(`http://localhost:5000/explorer/${explorerId}`)
     .success((obj) => {
+      console.log(obj, "explorer object")
       resolve(obj)
     })
     .error((error) => {
