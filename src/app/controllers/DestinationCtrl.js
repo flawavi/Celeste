@@ -13,24 +13,28 @@ app.controller('DestinationCtrl', function(
   QuestionsFactory
   ){
 
-
-  $scope.id = $routeParams.id
+  //integer representation of journeyid
   let id = parseInt($route.current.params.id, 10),
+  //string representation of journeyid
       journeyID = $routeParams.id
 
+  //ng-show initializers
   $scope.active = true
-  $scope.hide = true
+  $scope.instructions = true
   $scope.quiz = false
   $scope.quizButton = false
   $scope.currentLesson = true
+  $scope.next = false
 
+  //get current journey
   JourneyFactory.getJourneyById(id)
     .then(journey => {
       $scope.topic = journey.destination
     })
 
+    //get lesson based off of journey id
   $scope.getLesson = () => {
-    $scope.hide = false
+    $scope.instructions = false
     $scope.quizButton = true
     CelesteFactory.getLessons()
     .then(data => {
@@ -40,8 +44,11 @@ app.controller('DestinationCtrl', function(
     })
   }
 
+  //function that accepts question as arg, returns function that accepts
+  //answer as argument, sets question.questionid to answer.questionid
   $scope.answerFilter = question => answer => question.questionsID = answer.questionsID
 
+  //retrieve answers by journeyid. return only necess. info. randomly sort order of array
   AnswersFactory.getAnswersByJourneyID(journeyID)
   .then(data => {
     $scope.answers = data.map(d => {
@@ -54,12 +61,14 @@ app.controller('DestinationCtrl', function(
     }).sort(() => 0.5 - Math.random())
   })
 
+  //retrieve questions by journeyid
   QuestionsFactory.getQuestionsByJourneyID(journeyID)
   .then(data => {
     console.log(data)
     $scope.questions = data
   })
 
+  //remove lesson, show quiz, show
   $scope.takeQuiz = () => {
     $scope.quiz = true
     $scope.currentLesson = false
@@ -76,17 +85,38 @@ app.controller('DestinationCtrl', function(
       }
     }
 
-
   $scope.prevDestination = prevDestination => {
     if(id <= 1) return
     prevDestination = id - 1
     $location.url(`/destination/${prevDestination}`)
   }
 
-  $scope.selectedAnswer = {}
-
-  $scope.checkAnswers = () => {
-    console.log($scope.selectedAnswer)
+  let checkAnswers = () => {
+    let questionIDs = Object.keys($scope.answerValues)
+    console.log("questionIDs", questionIDs)
+    console.log("$scope.selectedAnswers", $scope.selectedAnswers)
+    for(let i = 0; i < questionIDs.length; i++){
+      if($scope.selectedAnswers[questionIDs[i]].includes("false")){
+        console.log("$scope.selectedAnswers[questionIDs[i]]", $scope.selectedAnswers[questionIDs[i]])
+        let whareve = document.getElementById(`${$scope.selectedAnswers[questionIDs[i]]}`)
+        console.log("wut", whareve)
+        whareve.innerHTML = "test"
+        // document.getElementById(`${$scope.answersId.answerId}`)
+      }
+    }
   }
+
+  $scope.selectedAnswers = {}
+
+  $scope.formObj = () => {
+    $scope.answerValues = {}
+    for(let key in $scope.selectedAnswers){
+      if(!$scope.selectedAnswers.hasOwnProperty(key)) continue
+      $scope.answerValues[key] = $scope.selectedAnswers[key].includes('true')
+    }
+    checkAnswers()
+    console.log($scope.answerValues)
+  }
+
 
 })
