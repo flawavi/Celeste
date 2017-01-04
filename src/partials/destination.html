@@ -7,13 +7,13 @@
 
 <!-- <div>{{lessons}}</div> -->
 <div>
-  <h3 class="celesteText" ng-show="hide">Carefully read the following lesson, and prepare to answer some questions.</h3>
+  <h3 class="celesteText" ng-show="instructions">Carefully read the following lesson, and prepare to answer some questions.</h3>
   <p class="lessonText" ng-show="currentLesson">{{lesson}}</p>
-  <button ng-show="hide" class="btn btn-success" ng-click="getLesson()">Start Lesson</button>
+  <button ng-show="instructions" class="btn btn-success" ng-click="getLesson()">Start Lesson</button>
 </div>
 
   <div>
-    <button class="btn btn-warning" ng-click="takeQuiz()" ng-show="quizButton">Take Quiz</button>
+    <button class="btn btn-success" ng-click="takeQuiz()" ng-show="quizButton">Take Quiz</button>
   </div>
 
 <div class="container-fluid" ng-show="quiz">
@@ -21,15 +21,18 @@
     <h6 class="celesteText">Here are a bunch of questions related to {{topic}}</h6>
     <div>
       <form class="quizForm">
-        <ul ng-repeat="q in questions">
-          <li>{{q.question}}</li>
-            <li ng-repeat="a in answers | filter: {questionId: q.questionsID}">
-              <label>
-                <input type="radio" value="{{a.answerId}}{{a.correct}}" name="question - {{q.questionsID}}" ng-model="selectedAnswer[q.questionsID]" /> {{a.answer}}</label>
-            </li>
-        </ul>
+        <ol>
+          <li ng-repeat="q in questions">{{q.question}}
+            <ol>
+              <li ng-repeat="a in answers | filter: {questionId: q.questionsID}">
+                <label id="{{a.answerId}}{{a.correct}}">
+                  <input type="radio" value="{{a.answerId}}{{a.correct}}" name="question - {{q.questionsID}}" ng-model="selectedAnswers[q.questionsID]" /> {{a.answer}}</label>
+              </li>
+            </ol>
+          </li>
+        </ol>
         <div>
-          <button class="btn btn-success" ng-click="checkAnswers()">Submit</button>
+          <button class="btn btn-success" ng-click="formObj()">Submit</button>
         </div>
       </form>
     </div>
@@ -38,24 +41,8 @@
 </div>
 
 <div>
-  <button class="btn btn-success" ng-click="nextDestination(id)">Next Destination</button>
+  <button class="btn btn-success" ng-show="next" ng-click="nextDestination(id)">Next Destination</button>
 </div>
 <div>
   <button class="btn btn-warning" ng-click="prevDestination(id)">Previous Destination</button>
 </div>
-<div ng-hide="true">
-  <button></button>
-</div>
-
-<!-- <ul class="unstyled">
-  <li ng-repeat="q in questions">
-   <strong class="question">{{ q.question }}</strong>
-   <ul class="unstyled" id="quest_{{$parent.$index}}"">
-    <li ng-repeat="a in answers">
-      <label class="isCorrect_{{answer.selected}}" for="quest_{{$parent.$index}}_answer_{{$index}}">
-        <input type="radio" id="quest_{{$parent.$index}}_answer_{{$index}}"
-        ng-model="answers[$parent.$index]" value="{{ answer.answerText }}"  name="quest_{{$parent.$index}}_answers" />{{ a.answer }}</label>
-    </li>
-   </ul>
-  </li>
-</ul> -->
