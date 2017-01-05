@@ -22,13 +22,14 @@
     <div>
       <form class="quizForm">
         <ol>
-          <li id="{{q.questionsID}}"ng-repeat="q in questions">{{q.question}}
+          <li ng-repeat="q in questions">{{q.question}}
             <ol>
               <li ng-repeat="a in answers | filter: {questionId: q.questionsID}">
                 <label id="{{a.answerId}}{{a.correct}}">
                   <input type="radio" value="{{a.answerId}}{{a.correct}}" name="question - {{q.questionsID}}" ng-model="selectedAnswers[q.questionsID]" /> {{a.answer}}</label>
               </li>
             </ol>
+            <span id="{{q.questionsID}}"></span>
           </li>
         </ol>
         <div>
