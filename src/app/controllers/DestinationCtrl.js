@@ -15,7 +15,7 @@ app.controller('DestinationCtrl', function(
 
   $scope.id = parseInt($route.current.params.id, 10)
   //integer representation of journeyId
-  let id = parseInt($route.current.params.id, 10),
+  const id = parseInt($route.current.params.id, 10),
   //string representation of journeyId
       journeyID = $routeParams.id
 
@@ -33,23 +33,24 @@ app.controller('DestinationCtrl', function(
       $scope.topic = journey.destination
     })
 
-    //get lesson based off of journey id
+  //get lesson based off of journey id
   $scope.getLesson = () => {
     $scope.instructions = false
     $scope.quizButton = true
     CelesteFactory.getLessons()
     .then(data => {
-    // $scope.destination = data.map(d => d.journeyID)
     $scope.lessons = data.map(d => d.lesson)
     $scope.lesson = $scope.lessons[id - 1]
     })
   }
 
   //function that accepts question as arg, returns function that accepts
-  //answer as argument, sets question.questionid to answer.questionid
+  //answer as argument, sets question.questionsID to answer.questionsID
+  //this makes the ng-repeat filter functionality work properly
   $scope.answerFilter = question => answer => question.questionsID = answer.questionsID
 
-  //retrieve answers by journeyid. return only necess. info. randomly sort order of array
+  //retrieve answers by journeyID. return only necess. info.
+  //randomly sort order of array
   AnswersFactory.getAnswersByJourneyID(journeyID)
   .then(data => {
     $scope.answers = data.map(d => {
@@ -62,10 +63,9 @@ app.controller('DestinationCtrl', function(
     }).sort(() => 0.5 - Math.random())
   })
 
-  //retrieve questions by journeyid
+  //retrieve questions by journeyID
   QuestionsFactory.getQuestionsByJourneyID(journeyID)
   .then(data => {
-    console.log(data)
     $scope.questions = data
   })
 
@@ -76,6 +76,7 @@ app.controller('DestinationCtrl', function(
     $scope.quizButton = false
   }
 
+  //affordance to move to next destination (only works if all answers are correct)
   $scope.nextDestination = nextDestination => {
     if(id === 9){
       nextDestination = "/theend"
@@ -86,25 +87,30 @@ app.controller('DestinationCtrl', function(
       }
     }
 
+  //affordance to go back to previous destination (available at all times)
   $scope.prevDestination = prevDestination => {
     if(id <= 1) return
     prevDestination = id - 1
     $location.url(`/destination/${prevDestination}`)
   }
 
-  let formObj = () => {
+  //takes answers from user and determines if they are true or false,
+  //then applies styling to indicate as much.
+  //If all answers are true, the next destination button ng-show is set to true.
+  const formObj = () => {
     let questionIDs = Object.keys($scope.answerValues)
     let answersBooleanArr = questionIDs.map(d => {
-      let i = questionIDs.indexOf(d)
-      let questionElement = document.getElementById(`${d}`)
-      let answerElement = document.getElementById(`${$scope.selectedAnswers[questionIDs[i]]}`)
+      let i = questionIDs.indexOf(d),
+          questionElement = document.getElementById(`${d}`),
+          answerElement = document.getElementById(`${$scope.selectedAnswers[questionIDs[i]]}`)
       if($scope.selectedAnswers[questionIDs[i]].includes("true")){
         questionElement.style.setProperty("color", "black")
         questionElement.innerHTML = ""
         return "true"
       } else {
         answerElement.style.setProperty("text-decoration", "line-through")
-        questionElement.innerHTML = "This is not the right answer. Please make another selection."
+        let choice = answerElement.innerText
+        questionElement.innerHTML = `${choice} is not the right answer. Please make another selection.`
         questionElement.style.setProperty("color", "red")
         return "false"
       }
@@ -114,17 +120,17 @@ app.controller('DestinationCtrl', function(
     }
   }
 
+  //ng-model
   $scope.selectedAnswers = {}
 
+  //
   $scope.checkAnswers = () => {
     $scope.answerValues = {}
     for(let key in $scope.selectedAnswers){
       if(!$scope.selectedAnswers.hasOwnProperty(key)) continue
-      $scope.answerValues[key] = $scope.selectedAnswers[key].includes('true')
+      $scope.answerValues[key] = $scope.selectedAnswers[key].includes("true")
     }
+    console.log("answerValues", $scope.answerValues, "selectedAnswers", $scope.selectedAnswers)
     formObj()
-    console.log($scope.answerValues)
   }
-
-
 })
