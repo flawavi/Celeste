@@ -98,8 +98,11 @@ app.controller('DestinationCtrl', function(
       if($scope.selectedAnswers[questionIDs[i]].includes("true")){
         return "true"
       } else {
-        let listElement = document.getElementById(`${$scope.selectedAnswers[questionIDs[i]]}`)
-        listElement.style.setProperty("text-decoration", "line-through");
+        let answerElement = document.getElementById(`${$scope.selectedAnswers[questionIDs[i]]}`)
+        let questionElement = document.getElementById(`${d}`)
+        answerElement.style.setProperty("text-decoration", "line-through")
+        // questionElement.append(" This is not the right answer. Please make another selection.")
+        questionElement.style.setProperty("color", "red")
         return "false"
       }
     })
