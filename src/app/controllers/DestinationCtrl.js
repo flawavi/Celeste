@@ -95,13 +95,15 @@ app.controller('DestinationCtrl', function(
     let questionIDs = Object.keys($scope.answerValues)
     let answersBooleanArr = questionIDs.map(d => {
       let i = questionIDs.indexOf(d)
+      let questionElement = document.getElementById(`${d}`)
+      let answerElement = document.getElementById(`${$scope.selectedAnswers[questionIDs[i]]}`)
       if($scope.selectedAnswers[questionIDs[i]].includes("true")){
+        questionElement.style.setProperty("color", "black")
+        questionElement.innerHTML = ""
         return "true"
       } else {
-        let answerElement = document.getElementById(`${$scope.selectedAnswers[questionIDs[i]]}`)
-        let questionElement = document.getElementById(`${d}`)
         answerElement.style.setProperty("text-decoration", "line-through")
-        // questionElement.append(" This is not the right answer. Please make another selection.")
+        questionElement.innerHTML = "This is not the right answer. Please make another selection."
         questionElement.style.setProperty("color", "red")
         return "false"
       }
