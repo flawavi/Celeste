@@ -91,7 +91,7 @@ app.controller('DestinationCtrl', function(
     $location.url(`/destination/${prevDestination}`)
   }
 
-  let checkAnswers = () => {
+  let formObj = () => {
     let questionIDs = Object.keys($scope.answerValues)
     let answersBooleanArr = questionIDs.map(d => {
       let i = questionIDs.indexOf(d)
@@ -110,7 +110,7 @@ app.controller('DestinationCtrl', function(
 
   $scope.selectedAnswers = {}
 
-  $scope.formObj = () => {
+  $scope.checkAnswers = () => {
     $scope.answerValues = {}
     for(let key in $scope.selectedAnswers){
       if(!$scope.selectedAnswers.hasOwnProperty(key)) continue
