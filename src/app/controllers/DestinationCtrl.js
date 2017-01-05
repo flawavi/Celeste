@@ -104,13 +104,14 @@ app.controller('DestinationCtrl', function(
           questionElement = document.getElementById(`${d}`),
           answerElement = document.getElementById(`${$scope.selectedAnswers[questionIDs[i]]}`)
       if($scope.selectedAnswers[questionIDs[i]].includes("true")){
-        questionElement.style.setProperty("color", "black")
-        questionElement.innerHTML = ""
+        questionElement.style.setProperty("color", "green")
+        questionElement.style.setProperty("font-weight", "bold")
+        questionElement.innerHTML = "Correct!"
         return "true"
       } else {
-        answerElement.style.setProperty("text-decoration", "line-through")
         let choice = answerElement.innerText
-        questionElement.innerHTML = `${choice} is not the right answer. Please make another selection.`
+        answerElement.style.setProperty("text-decoration", "line-through")
+        questionElement.innerText = `${choice} is not the right answer. Please make another selection.`
         questionElement.style.setProperty("color", "red")
         return "false"
       }
