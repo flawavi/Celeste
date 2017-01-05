@@ -13,9 +13,10 @@ app.controller('DestinationCtrl', function(
   QuestionsFactory
   ){
 
+  $scope.id = parseInt($route.current.params.id, 10)
   //integer representation of journeyId
   let id = parseInt($route.current.params.id, 10),
-  //string representation of journeyid
+  //string representation of journeyId
       journeyID = $routeParams.id
 
   //ng-show initializers
