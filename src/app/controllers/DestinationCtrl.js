@@ -99,7 +99,7 @@ app.controller('DestinationCtrl', function(
         return "true"
       } else {
         let listElement = document.getElementById(`${$scope.selectedAnswers[questionIDs[i]]}`)
-        listElement.append(" this is wrong")
+        listElement.style.setProperty("text-decoration", "line-through");
         return "false"
       }
     })
