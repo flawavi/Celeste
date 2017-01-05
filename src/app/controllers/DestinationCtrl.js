@@ -13,7 +13,7 @@ app.controller('DestinationCtrl', function(
   QuestionsFactory
   ){
 
-  //integer representation of journeyid
+  //integer representation of journeyId
   let id = parseInt($route.current.params.id, 10),
   //string representation of journeyid
       journeyID = $routeParams.id
@@ -93,16 +93,18 @@ app.controller('DestinationCtrl', function(
 
   let checkAnswers = () => {
     let questionIDs = Object.keys($scope.answerValues)
-    console.log("questionIDs", questionIDs)
-    console.log("$scope.selectedAnswers", $scope.selectedAnswers)
-    for(let i = 0; i < questionIDs.length; i++){
-      if($scope.selectedAnswers[questionIDs[i]].includes("false")){
-        console.log("$scope.selectedAnswers[questionIDs[i]]", $scope.selectedAnswers[questionIDs[i]])
-        let whareve = document.getElementById(`${$scope.selectedAnswers[questionIDs[i]]}`)
-        console.log("wut", whareve)
-        whareve.innerHTML = "test"
-        // document.getElementById(`${$scope.answersId.answerId}`)
+    let answersBooleanArr = questionIDs.map(d => {
+      let i = questionIDs.indexOf(d)
+      if($scope.selectedAnswers[questionIDs[i]].includes("true")){
+        return "true"
+      } else {
+        let listElement = document.getElementById(`${$scope.selectedAnswers[questionIDs[i]]}`)
+        listElement.append(" this is wrong")
+        return "false"
       }
+    })
+    if(!answersBooleanArr.includes("false")) {
+      $scope.next = true
     }
   }
 
