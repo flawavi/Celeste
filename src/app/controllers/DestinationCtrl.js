@@ -116,7 +116,7 @@ app.controller('DestinationCtrl', function(
       if(!$scope.selectedAnswers.hasOwnProperty(key)) continue
       $scope.answerValues[key] = $scope.selectedAnswers[key].includes('true')
     }
-    checkAnswers()
+    formObj()
     console.log($scope.answerValues)
   }
 
