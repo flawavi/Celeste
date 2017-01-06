@@ -50,7 +50,7 @@ app.controller('LoginCtrl', function($scope, $location, $window, AuthFactory, Ex
     })
     .then(userData => {
       if(userData) {
-        $window.location.href = `#/command_deck/${AuthFactory.getUser().uid}`
+        $window.location.href = `#/command_deck`
       console.log('USERDATA', userData)
       } else {
         $window.location.href = "#/login"
