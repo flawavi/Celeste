@@ -2,7 +2,7 @@
   "name": "celeste",
   "version": "0.1.0",
   "devDependencies": {
-    "angular": "^1.5.8",
+    "angular": "1.5.8",
     "angularfire": "^2.0.2",
     "firebase": "^3.3.0",
     "grunt": "^0.4.5",
