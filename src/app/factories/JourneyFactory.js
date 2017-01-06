@@ -27,6 +27,7 @@ app.factory("JourneyFactory", function($q, $http){
       })
     })
   }
+
   service = {getJournies, getJourneyById}
   return service
 })
