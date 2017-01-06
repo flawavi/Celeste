@@ -1,49 +1,49 @@
+  <background-image: class="backgroundImage" url("{{image}}")>
 <div>
+  <div>
+    <center><h3 class="celesteText">Destination {{id}}: {{topic}}</h3></center>
+  </div>
 
-  <center><h3 class="celesteText">Destination {{id}}: {{topic}}</h3></center>
+  <!-- <div>{{lessons}}</div> -->
+  <div>
+    <h3 class="celesteText" ng-show="instructions">Carefully read the following lesson, and prepare to answer some questions.</h3>
+    <p class="lessonText" ng-show="currentLesson">{{lesson}}</p>
+    <button ng-show="instructions" class="btn btn-success" ng-click="getLesson()">Start Lesson</button>
+  </div>
 
+    <div>
+      <button class="btn btn-success" ng-click="takeQuiz()" ng-show="quizButton">Take Quiz</button>
+    </div>
 
-</div>
+  <div class="container-fluid" ng-show="quiz">
+    <div class="col-sm-6">
+      <h6 class="celesteText">Here are a bunch of questions related to {{topic}}</h6>
+      <div>
+        <form class="quizForm">
+          <ol>
+            <li ng-repeat="q in questions">{{q.question}}
+              <ol>
+                <li ng-repeat="a in answers | filter: {questionId: q.questionsID}">
+                  <label id="{{a.answerId}}{{a.correct}}">
+                    <input type="radio" value="{{a.answerId}}{{a.correct}}" name="question - {{q.questionsID}}" ng-model="selectedAnswers[q.questionsID]" /> {{a.answer}}</label>
+                </li>
+              </ol>
+              <span id="{{q.questionsID}}"></span>
+            </li>
+          </ol>
+          <div>
+            <button class="btn btn-success" ng-click="checkAnswers()">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
 
-<!-- <div>{{lessons}}</div> -->
-<div>
-  <h3 class="celesteText" ng-show="instructions">Carefully read the following lesson, and prepare to answer some questions.</h3>
-  <p class="lessonText" ng-show="currentLesson">{{lesson}}</p>
-  <button ng-show="instructions" class="btn btn-success" ng-click="getLesson()">Start Lesson</button>
-</div>
+  </div>
 
   <div>
-    <button class="btn btn-success" ng-click="takeQuiz()" ng-show="quizButton">Take Quiz</button>
+    <button class="btn btn-success" ng-show="next" ng-click="nextDestination(id)">Next Destination</button>
   </div>
-
-<div class="container-fluid" ng-show="quiz">
-  <div class="col-sm-6">
-    <h6 class="celesteText">Here are a bunch of questions related to {{topic}}</h6>
-    <div>
-      <form class="quizForm">
-        <ol>
-          <li ng-repeat="q in questions">{{q.question}}
-            <ol>
-              <li ng-repeat="a in answers | filter: {questionId: q.questionsID}">
-                <label id="{{a.answerId}}{{a.correct}}">
-                  <input type="radio" value="{{a.answerId}}{{a.correct}}" name="question - {{q.questionsID}}" ng-model="selectedAnswers[q.questionsID]" /> {{a.answer}}</label>
-              </li>
-            </ol>
-            <span id="{{q.questionsID}}"></span>
-          </li>
-        </ol>
-        <div>
-          <button class="btn btn-success" ng-click="checkAnswers()">Submit</button>
-        </div>
-      </form>
-    </div>
+  <div>
+    <button class="btn btn-warning" ng-click="prevDestination(id)">Previous Destination</button>
   </div>
-
-</div>
-
-<div>
-  <button class="btn btn-success" ng-show="next" ng-click="nextDestination(id)">Next Destination</button>
-</div>
-<div>
-  <button class="btn btn-warning" ng-click="prevDestination(id)">Previous Destination</button>
 </div>
