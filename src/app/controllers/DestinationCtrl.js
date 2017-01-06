@@ -44,6 +44,11 @@ app.controller('DestinationCtrl', function(
     })
   }
 
+  CelesteFactory.getLessons()
+    .then(data => {
+      $scope.image = data[id - 1].imageURL
+  })
+
   //function that accepts question as arg, returns function that accepts
   //answer as argument, sets question.questionsID to answer.questionsID
   //this makes the ng-repeat filter functionality work properly
