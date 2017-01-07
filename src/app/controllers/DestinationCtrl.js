@@ -1,5 +1,17 @@
 'use strict'
 
+const IMG_PATH = {
+  '1': '/imgs/1.png',
+  '2': '/imgs/2.svg',
+  '3': '/imgs/3.svg',
+  '4': '/imgs/4.png',
+  '5': '/imgs/5.svg',
+  '6': '/imgs/6.png',
+  '7': '/imgs/7.jpg',
+  '8': '/imgs/8.svg',
+  '9': '/imgs/9.png'
+}
+
 app.controller('DestinationCtrl', function(
   $scope,
   $route,
@@ -13,12 +25,15 @@ app.controller('DestinationCtrl', function(
   QuestionsFactory
   ){
 
+
   $scope.id = parseInt($route.current.params.id, 10)
   let imgId = $route.current.params.id
   //integer representation of journeyId
   const id = parseInt($route.current.params.id, 10),
   //string representation of journeyId
       journeyID = $routeParams.id
+
+  $scope.imagePath = IMG_PATH[imgId]
 
   //ng-show initializers
   $scope.active = true
@@ -44,21 +59,6 @@ app.controller('DestinationCtrl', function(
     $scope.lesson = $scope.lessons[id - 1]
     })
   }
-
-
-  if(imgId === '1' || imgId === '4' || imgId === '6' || imgId === '9'){
-    console.log(imgId)
-    let fileType = '.png'
-    $scope.imagePath = `/imgs/${imgId}${fileType}`
-  } else if(imgId === '7'){
-    let fileType = '.jpg'
-    $scope.imagePath = `/imgs/${imgId}${fileType}`
-  } else {
-    let fileType = '.svg'
-    $scope.imagePath = `/imgs/${imgId}${fileType}`
-  }
-
-  // /src/imgs/1.png
 
 
   //function that accepts question as arg, returns function that accepts
@@ -148,7 +148,6 @@ app.controller('DestinationCtrl', function(
       if(!$scope.selectedAnswers.hasOwnProperty(key)) continue
       $scope.answerValues[key] = $scope.selectedAnswers[key].includes("true")
     }
-    console.log("answerValues", $scope.answerValues, "selectedAnswers", $scope.selectedAnswers)
     formObj()
   }
 })
