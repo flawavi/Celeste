@@ -14,6 +14,7 @@ app.controller('DestinationCtrl', function(
   ){
 
   $scope.id = parseInt($route.current.params.id, 10)
+  let imgId = $route.current.params.id
   //integer representation of journeyId
   const id = parseInt($route.current.params.id, 10),
   //string representation of journeyId
@@ -44,10 +45,21 @@ app.controller('DestinationCtrl', function(
     })
   }
 
-  CelesteFactory.getLessons()
-    .then(data => {
-      $scope.image = data[id - 1].imageURL
-  })
+
+  if(imgId === '1' || imgId === '4' || imgId === '6' || imgId === '9'){
+    console.log(imgId)
+    let fileType = '.png'
+    $scope.imagePath = `/imgs/${imgId}${fileType}`
+  } else if(imgId === '7'){
+    let fileType = '.jpg'
+    $scope.imagePath = `/imgs/${imgId}${fileType}`
+  } else {
+    let fileType = '.svg'
+    $scope.imagePath = `/imgs/${imgId}${fileType}`
+  }
+
+  // /src/imgs/1.png
+
 
   //function that accepts question as arg, returns function that accepts
   //answer as argument, sets question.questionsID to answer.questionsID
