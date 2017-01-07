@@ -7,22 +7,31 @@ app.controller("CommandDeckCtrl", function(
   AuthFactory,
   $routeParams,
   JourneyFactory,
-  ExplorerFactory
+  ExplorerFactory,
+  ExplorerJourneyFactory
   ){
+
 
   AuthFactory.currentUser().then(user => {
     ExplorerFactory.getExplorerById(user.uid)
     .then(explorer => {
       // $scope.isLoggedIn = true
       $scope.explorer = explorer
+      ExplorerJourneyFactory.getExplorerJournies(user.uid)
+      .then(explorerJournies => {
+        JourneyFactory.getJournies()
+        .then(journies => {
+          let journeyMap = journies.reduce((journies, journey) => {
+            return Object.assign(journies, {[journey.journeyID]: journey})
+          }, {})
+          console.log(journeyMap)
+          $scope.journies = explorerJournies.map(ej => journeyMap[ej.journeyID])
+        })
+        // $scope.journiesCompleted =
+      })
     })
   })
 
-  JourneyFactory.getJournies()
-  .then(data => {
-    console.log('hello data?', data)
-    $scope.journies = data
-  })
 
   $scope.deleteProfile = () => {
     alert("Are you sure you want to delete your profile?")
