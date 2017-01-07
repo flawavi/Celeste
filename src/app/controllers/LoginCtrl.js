@@ -18,6 +18,7 @@ app.controller('LoginCtrl', function($scope, $location, $window, AuthFactory, Ex
     })
     .then(userData => {
       if(userData) {
+        
         $window.location.href = "#/createExplorer"
       } else {
         $window.location.href = "#/login"

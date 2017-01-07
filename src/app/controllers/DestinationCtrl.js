@@ -17,12 +17,14 @@ app.controller('DestinationCtrl', function(
   $route,
   $window,
   $location,
+  AuthFactory,
   $routeParams,
   JourneyFactory,
   AnswersFactory,
   CelesteFactory,
   ExplorerFactory,
-  QuestionsFactory
+  QuestionsFactory,
+  ExplorerJourneyFactory
   ){
 
 
@@ -134,7 +136,13 @@ app.controller('DestinationCtrl', function(
       }
     })
     if(!answersBooleanArr.includes("false")) {
-      $scope.next = true
+      AuthFactory.currentUser().then(user => {
+        console.log(user.uid)
+        return ExplorerJourneyFactory.postCompletedJourney(user.uid, id).then(data => {
+          console.table(data)
+          $scope.next = true
+        })
+      })
     }
   }
 

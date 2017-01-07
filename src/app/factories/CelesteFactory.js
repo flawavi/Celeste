@@ -7,10 +7,10 @@ app.factory("CelesteFactory", function($q, $http, AuthFactory){
   let getLessons = () => {
     return $q((resolve, reject) => {
       $http.get(`http://localhost:5000/celesteHost`)
-      .success((obj) => {
+      .success(obj => {
       resolve(obj)
     })
-    .error((error) => {
+    .error(error => {
       reject(error)
       })
     })
