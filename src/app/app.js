@@ -40,10 +40,6 @@ app.config(function($routeProvider){
     templateUrl: 'partials/journey.html',
     controller: 'JourneyCtrl'
   })
-  .when('/create_journey', {
-    templateUrl: 'partials/createJourney.html',
-    controller: 'CreateJourneyCtrl'
-  })
   .when('/theend', {
     templateUrl: 'partials/theend.html',
     controller: 'TheEndCtrl'

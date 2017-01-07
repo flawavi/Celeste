@@ -26,6 +26,12 @@ app.controller("CommandDeckCtrl", function(
           }, {})
           console.log(journeyMap)
           $scope.journies = explorerJournies.map(ej => journeyMap[ej.journeyID])
+          let nextJourneyId = $scope.journies.reduce((maxId, journey) => {
+            return journey.journeyID > maxId ? journey.journeyID : maxId
+          }, 0)
+          $scope.nextJourney = journeyMap[(nextJourneyId === 8 ? 0 : nextJourneyId) + 1]
+          console.log($scope.nextJourney)
+          console.log(nextJourneyId)
         })
         // $scope.journiesCompleted =
       })
@@ -42,6 +48,6 @@ app.controller("CommandDeckCtrl", function(
     })
   }
   $scope.startJourney = () => {
-    $window.location.href = '/#/journey'
+    $window.location.href = `/#/destination/${$scope.nextJourney.journeyID}`
   }
 })
