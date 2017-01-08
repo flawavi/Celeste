@@ -6,7 +6,7 @@ app.factory("CelesteFactory", function($q, $http, AuthFactory, Celeste_API_URL){
 
   let getLessons = () => {
     return $q((resolve, reject) => {
-      $http.get(`${Celeste_API_URL}`)
+      $http.get(`${Celeste_API_URL}celesteHost`)
       .success(obj => {
       resolve(obj)
     })

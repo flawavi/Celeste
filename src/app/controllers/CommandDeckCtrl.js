@@ -3,6 +3,7 @@
 app.controller("CommandDeckCtrl", function(
   $scope,
   $window,
+  $route,
   $location,
   AuthFactory,
   $routeParams,
@@ -10,7 +11,6 @@ app.controller("CommandDeckCtrl", function(
   ExplorerFactory,
   ExplorerJourneyFactory
   ){
-
 
   AuthFactory.currentUser().then(user => {
     ExplorerFactory.getExplorerById(user.uid)
@@ -30,8 +30,14 @@ app.controller("CommandDeckCtrl", function(
             return journey.journeyID > maxId ? journey.journeyID : maxId
           }, 0)
           $scope.nextJourney = journeyMap[(nextJourneyId === 8 ? 0 : nextJourneyId) + 1]
+          if($scope.nextJourney.destination === "Moon" || $scope.nextJourney.destination === "Sun" || $scope.nextJourney.destination === "Milky Way Black Hole" ){
+            $scope.destination = `The ` + $scope.nextJourney.destination
+          } else {
+            $scope.destination = $scope.nextJourney.destination
+          }
           if($scope.nextJourney.journeyID === 1){
             $scope.noCompletedJourniesMsg = "Looks like you haven't completed any journies, yet. What are you waiting for!?"
+            $scope.instructions = "Hit the green Explore button under your profile to begin your journey to the Moon."
           }
         })
       })

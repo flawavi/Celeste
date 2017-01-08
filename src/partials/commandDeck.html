@@ -13,7 +13,7 @@
     <h4>Trips around the Sun </h4>
     <span>{{explorer.age}}</span>
     <div>
-      <button class="btn btn-success" ng-click="startJourney()">Explore</button>
+      <button class="btn btn-success" ng-click="startJourney()">Explore {{destination}}</button>
       <button class="delete-btn btn btn-danger" ng-click="deleteExplorer()">Delete Profile</button>
     </div>
   </div>
@@ -30,6 +30,7 @@
       </div></center>
         </div>
         <h5 class="col-sm-6 celesteText">{{noCompletedJourniesMsg}}</h5>
+        <h5 class="col-sm-6 celesteText">{{instructions}}</h5>
     </div>
   </div>
 </div>

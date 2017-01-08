@@ -57,6 +57,7 @@ app.controller('DestinationCtrl', function(
     $scope.quizButton = true
     CelesteFactory.getLessons()
     .then(data => {
+      console.log(data)
     $scope.lessons = data.map(d => d.lesson)
     $scope.lesson = $scope.lessons[id - 1]
     })
