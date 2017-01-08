@@ -3,7 +3,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
     jshint: {
       options: {
-        predef: [ "document", "alert", "console", "$", "$scope", "app", "firebase", "$route", "infoWindow", "map", "_", "$window"],
+        predef: [ "document", "alert", "confirm", "console", "$", "$scope", "app", "firebase", "$route", "infoWindow", "map", "_", "$window"],
         asi: true,
         esnext: true,
         globalstrict: true,

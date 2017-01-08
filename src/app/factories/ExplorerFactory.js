@@ -35,6 +35,16 @@ app.factory("ExplorerFactory", function($q, $http, AuthFactory, Celeste_API_URL)
     .error(reject)
     })
   }
-  service = {getExplorers, postExplorer, getExplorerById}
+
+  let deleteCurrentExplorer = (explorerId) => {
+    explorerId = AuthFactory.getUser().uid
+    return $q((resolve, reject) => {
+      $http.delete(`${Celeste_API_URL}explorer/${explorerId}`)
+      .success(resolve)
+      .error(reject)
+    })
+  }
+
+  service = {getExplorers, postExplorer, getExplorerById, deleteCurrentExplorer}
   return service
 })
