@@ -1,30 +1,26 @@
 "use strict"
 
-app.factory("QuestionsFactory", function($q, $http){
+app.factory("QuestionsFactory", function($q, $http, Celeste_API_URL){
+
+  let service
 
   let getAllQuestions = () => {
     return $q((resolve, reject) => {
-    $http.get(`http://localhost:5000/questions.json`)
-    .success((obj) => {
-      resolve(obj)
-    })
-    .error((error) => {
-      reject(error)
-      })
+    $http.get(`${Celeste_API_URL}questions.json`)
+    .success(resolve)
+    .error(reject)
     })
   }
 
   let getQuestionsByJourneyID = (id) => {
     return $q((resolve, reject) => {
-    $http.get(`http://localhost:5000/questions/${id}`)
-    .success(obj => {
-      resolve(obj)
-    })
-    .error(error => {
-      reject(error)
-      })
+    $http.get(`${Celeste_API_URL}questions/${id}`)
+    .success(resolve)
+    .error(reject)
     })
   }
 
-  return {getAllQuestions, getQuestionsByJourneyID}
+  service = {getAllQuestions, getQuestionsByJourneyID}
+  return service
+
 })
