@@ -11,7 +11,6 @@ app.controller("CommandDeckCtrl", function(
   ExplorerJourneyFactory
   ){
 
-
   AuthFactory.currentUser().then(user => {
     ExplorerFactory.getExplorerById(user.uid)
     .then(explorer => {
@@ -30,23 +29,23 @@ app.controller("CommandDeckCtrl", function(
             return journey.journeyID > maxId ? journey.journeyID : maxId
           }, 0)
           $scope.nextJourney = journeyMap[(nextJourneyId === 8 ? 0 : nextJourneyId) + 1]
-          console.log($scope.nextJourney)
-          console.log(nextJourneyId)
+          if($scope.nextJourney.journeyID === 1){
+            $scope.noCompletedJourniesMsg = "Looks like you haven't completed any journies, yet. What are you waiting for!?"
+          }
         })
-        // $scope.journiesCompleted =
       })
     })
   })
 
-
   $scope.deleteProfile = () => {
     alert("Are you sure you want to delete your profile?")
     ExplorerFactory.deleteProfile($scope.explorer.id)
-    .then(()=>{
+    .then(() => {
       console.log("profile deleted")
       $location.url("/login")
     })
   }
+
   $scope.startJourney = () => {
     $window.location.href = `/#/destination/${$scope.nextJourney.journeyID}`
   }
