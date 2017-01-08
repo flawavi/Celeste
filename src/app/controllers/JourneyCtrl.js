@@ -2,6 +2,7 @@
 
 app.controller('JourneyCtrl', function(
   $scope,
+  $route,
   $location,
   AuthFactory,
   JourneyFactory,

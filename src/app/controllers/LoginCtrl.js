@@ -1,6 +1,12 @@
 'use strict'
 
-app.controller('LoginCtrl', function($scope, $location, $window, AuthFactory, ExplorerFactory){
+app.controller('LoginCtrl', function(
+  $scope,
+  $route,
+  $window,
+  $location,
+  AuthFactory,
+  ExplorerFactory){
 
   $scope.greeting = 'Hello, Explorer!'
   $scope.galonzo = 'Or as we say on my home planet: Galonzo, Explorer!'
@@ -18,7 +24,6 @@ app.controller('LoginCtrl', function($scope, $location, $window, AuthFactory, Ex
     })
     .then(userData => {
       if(userData) {
-        
         $window.location.href = "#/createExplorer"
       } else {
         $window.location.href = "#/login"

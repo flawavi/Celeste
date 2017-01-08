@@ -11,6 +11,7 @@ app.controller("CommandDeckCtrl", function(
   ExplorerJourneyFactory
   ){
 
+
   AuthFactory.currentUser().then(user => {
     ExplorerFactory.getExplorerById(user.uid)
     .then(explorer => {
