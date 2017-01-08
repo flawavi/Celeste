@@ -60,8 +60,12 @@ app.controller("CommandDeckCtrl", function(
     })
   }
 
+  $scope.editExplorer = () => {
+    $window.location.href = "/#/editExplorer"
+    }
 
   $scope.startJourney = () => {
     $window.location.href = `/#/destination/${$scope.nextJourney.journeyID}`
   }
+  
 })

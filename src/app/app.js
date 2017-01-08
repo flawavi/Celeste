@@ -28,6 +28,10 @@ app.config(function($routeProvider){
     templateUrl: 'partials/createExplorer.html',
     controller: 'CreateExplorerCtrl'
   })
+  .when('/editExplorer', {
+    templateUrl: 'partials/editExplorer.html',
+    controller: 'EditExplorerCtrl'
+  })
   .when('/command_deck', {
     templateUrl: 'partials/commandDeck.html',
     controller: 'CommandDeckCtrl'
