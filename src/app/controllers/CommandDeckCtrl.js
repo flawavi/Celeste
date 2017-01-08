@@ -36,8 +36,11 @@ app.controller("CommandDeckCtrl", function(
             $scope.destination = $scope.nextJourney.destination
           }
           if($scope.nextJourney.journeyID === 1){
+            $scope.nameAndDestination = false
             $scope.noCompletedJourniesMsg = "Looks like you haven't completed any journies, yet. What are you waiting for!?"
             $scope.instructions = "Hit the green Explore button under your profile to begin your journey to the Moon."
+          } else {
+            $scope.nameAndDestination = true
           }
         })
       })
@@ -67,5 +70,5 @@ app.controller("CommandDeckCtrl", function(
   $scope.startJourney = () => {
     $window.location.href = `/#/destination/${$scope.nextJourney.journeyID}`
   }
-  
+
 })
