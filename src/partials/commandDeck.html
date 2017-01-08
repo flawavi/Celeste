@@ -13,7 +13,7 @@
     <h4>Trips around the Sun </h4>
     <span>{{explorer.age}}</span>
     <div>
-      <button class="btn btn-success" ng-click="startJourney()">Next Journey</button>
+      <button class="btn btn-success" ng-click="startJourney()">Explore</button>
       <button class="delete-btn btn btn-danger" ng-click="deleteProfile()">Delete Profile</button>
     </div>
   </div>
@@ -26,8 +26,10 @@
       <center><div ng-repeat="journey in journies">
         <h5 class="col-sm-6">{{journey.name}}</h5>
         <h5 class="col-sm-6">{{journey.destination}}</h5>
+
       </div></center>
         </div>
+        <h5 class="col-sm-6 celesteText">{{noCompletedJourniesMsg}}</h5>
     </div>
   </div>
 </div>

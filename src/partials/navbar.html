@@ -1,12 +1,11 @@
 <nav class="navbar" ng-controller="NavCtrl">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" ng-href="/#/">CELESTE</a>
+      <a class="navbar-brand" ng-href="/#/command_deck">CELESTE</a>
       <h6 ng-show="isLoggedIn">{{explorer.firstName}} is currently exploring the universe</h6>
       </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li ng-show="isLoggedIn"><a ng-href="#/create_journey">Start A Journey</a></li>
         <li ng-show="isLoggedIn"><a ng-href="#/command_deck">Command Deck</a></li>
         <li><a class="logout" ng-click="logout()">Logout</a></li>
       </ul>

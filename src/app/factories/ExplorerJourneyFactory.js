@@ -10,7 +10,7 @@ app.factory('ExplorerJourneyFactory', function($q, $http, Celeste_API_URL){
         ExplorerID: explorerId,
         JourneyID: journeyId
       }
-      $http.post(`${Celeste_API_URL}explorerJourney/`,
+      $http.post(`${Celeste_API_URL}explorerJourney`,
         data)
       .success(resolve)
       .error(reject)
