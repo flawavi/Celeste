@@ -1,12 +1,12 @@
 <div>
   <div>
     <center><h3 class="celesteText">Destination {{id}}: {{topic}}</h3></center>
+    <h3 class="celesteText" ng-show="instructions">Carefully read the following lesson, and prepare to answer some questions.</h3>
   </div>
   <center><img class="backgroundImage" ng-src="{{imagePath}}"></center>
 
   <!-- <div>{{lessons}}</div> -->
   <div>
-    <h3 class="celesteText" ng-show="instructions">Carefully read the following lesson, and prepare to answer some questions.</h3>
     <p class="lessonText" ng-show="currentLesson">{{lesson}}</p>
     <button ng-show="instructions" class="btn btn-success" ng-click="getLesson()">Start Lesson</button>
   </div>
