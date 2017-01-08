@@ -12,7 +12,6 @@ app.controller('JourneyCtrl', function(
   $scope.listJournies = () => {
     JourneyFactory.getJournies()
     .then(data => {
-      console.log('hello data?', data)
       $scope.journies = data
     })
   }
@@ -21,13 +20,12 @@ app.controller('JourneyCtrl', function(
     $location.url('/destination/1')
   }
 
-AuthFactory.currentUser().then(user => {
-  console.log(user.uid)
+  AuthFactory.currentUser().then(user => {
     ExplorerFactory.getExplorerById(user.uid)
     .then(explorer => {
       console.log(explorer)
       $scope.isLoggedIn = true
-      $scope.explorerName = explorer.firstName
+      $scope.explorerName = explorer.username
+      })
     })
-  })
 })

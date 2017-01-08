@@ -14,7 +14,7 @@ app.factory("ExplorerFactory", function($q, $http, AuthFactory, Celeste_API_URL)
 
   let getExplorerById = (explorerId) => {
     return $q((resolve, reject) => {
-    $http.get(`${Celeste_API_URL}${explorerId}`)
+    $http.get(`${Celeste_API_URL}explorer/${explorerId}`)
     .success(resolve)
     .error(reject)
     })
@@ -25,7 +25,7 @@ app.factory("ExplorerFactory", function($q, $http, AuthFactory, Celeste_API_URL)
     return $q((resolve, reject) => {
     $http({
       method: 'POST',
-      url: `${Celeste_API_URL}`,
+      url: `${Celeste_API_URL}explorer`,
       data: newProfile,
       headers: {
         'Content-type': 'application/json'
