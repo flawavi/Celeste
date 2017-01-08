@@ -37,14 +37,22 @@ app.controller("CommandDeckCtrl", function(
     })
   })
 
-  $scope.deleteProfile = () => {
-    alert("Are you sure you want to delete your profile?")
-    ExplorerFactory.deleteProfile($scope.explorer.id)
-    .then(() => {
-      console.log("profile deleted")
-      $location.url("/login")
+  $scope.deleteExplorer = () => {
+    confirm("Are you sure you want to delete your profile?")
+    ExplorerFactory.deleteCurrentExplorer()
+    .then(user => {
+      console.log(user)
+      firebase.auth().currentUser.delete()
+      .then(() => {
+        $window.location.href = `/#/login`
+        // User deleted.
+      }, error => {
+        console.log(error)
+        // An error happened.
+      })
     })
   }
+
 
   $scope.startJourney = () => {
     $window.location.href = `/#/destination/${$scope.nextJourney.journeyID}`
