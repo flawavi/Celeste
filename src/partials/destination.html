@@ -1,19 +1,14 @@
 <div>
   <div>
-    <center><h3 class="celesteText">Destination {{id}}: {{topic}}</h3></center>
-    <h3 class="celesteText" ng-show="instructions">Carefully read the following lesson, and prepare to answer some questions.</h3>
+    <center><h2 class="celesteText">Destination {{id}}: {{topic}}</h2></center>
+    <center><h3 class="celesteText" ng-show="instructions">Carefully read the following lesson, and prepare to answer some questions.</h3></center>
   </div>
   <center><img class="backgroundImage" ng-src="{{imagePath}}"></center>
 
   <!-- <div>{{lessons}}</div> -->
   <div>
     <p class="lessonText" ng-show="currentLesson">{{lesson}}</p>
-    <button ng-show="instructions" class="btn btn-success" ng-click="getLesson()">Start Lesson</button>
   </div>
-
-    <div>
-      <button class="btn btn-success" ng-click="takeQuiz()" ng-show="quizButton">Take Quiz</button>
-    </div>
 
   <div class="container-fluid" ng-show="quiz">
     <div class="col-sm-6">
@@ -31,19 +26,20 @@
               <span id="{{q.questionsID}}"></span>
             </li>
           </ol>
+          <br>
           <div>
             <button class="btn btn-success" ng-click="checkAnswers()">Submit</button>
           </div>
         </form>
       </div>
     </div>
-
   </div>
 
-  <div>
+  <div class="bottom-buttons">
+    <button ng-show="instructions" class="left-button btn btn-success" ng-click="getLesson()">Start Lesson</button>
     <button class="btn btn-success" ng-show="next" ng-click="nextDestination(id)">Next Destination</button>
-  </div>
-  <div>
-    <button class="btn btn-warning" ng-click="prevDestination(id)">Previous Destination</button>
+    <button class="btn btn-warning right-button" ng-click="prevDestination(id)">Previous Destination</button>
+    <button class="btn btn-success left-button" ng-click="takeQuiz()" ng-show="quizButton">Take Quiz</button>
+
   </div>
 </div>

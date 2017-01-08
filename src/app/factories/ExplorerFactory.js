@@ -22,6 +22,7 @@ app.factory("ExplorerFactory", function($q, $http, AuthFactory, Celeste_API_URL)
 
   let postExplorer = (newProfile) => {
     newProfile.firebaseID = AuthFactory.getUser().uid
+
     return $q((resolve, reject) => {
     $http({
       method: 'POST',
@@ -36,7 +37,7 @@ app.factory("ExplorerFactory", function($q, $http, AuthFactory, Celeste_API_URL)
     })
   }
 
-  let deleteCurrentExplorer = (explorerId) => {
+  let deleteCurrentExplorer = explorerId => {
     explorerId = AuthFactory.getUser().uid
     return $q((resolve, reject) => {
       $http.delete(`${Celeste_API_URL}explorer/${explorerId}`)
@@ -45,6 +46,21 @@ app.factory("ExplorerFactory", function($q, $http, AuthFactory, Celeste_API_URL)
     })
   }
 
-  service = {getExplorers, postExplorer, getExplorerById, deleteCurrentExplorer}
+  let editCurrentExplorer = (id, updatedInfo) => {
+    return $q((resolve, reject) => {
+      $http({
+        method: 'PUT',
+        url: `${Celeste_API_URL}explorer`,
+        data: updatedInfo,
+        headers: {
+          'Content-type': 'application/json'
+        }
+      })
+      .success(resolve)
+      .error(reject)
+    })
+  }
+
+  service = {getExplorers, postExplorer, getExplorerById, deleteCurrentExplorer, editCurrentExplorer}
   return service
 })
