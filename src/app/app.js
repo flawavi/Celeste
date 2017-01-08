@@ -23,10 +23,6 @@ app.config(function($routeProvider){
   .when('/login', {
     templateUrl: 'partials/login.html',
     controller: 'LoginCtrl'
-    // redirectAuth: "/my-profile",
-    // resolve: {
-    //   redirectCurrentUser
-    // }
   })
   .when('/createExplorer', {
     templateUrl: 'partials/createExplorer.html',
