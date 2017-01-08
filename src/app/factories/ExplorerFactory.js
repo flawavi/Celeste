@@ -1,31 +1,22 @@
 "use strict"
 
-app.factory("ExplorerFactory", function($q, $http, AuthFactory){
+app.factory("ExplorerFactory", function($q, $http, AuthFactory, Celeste_API_URL){
 
-  let service
+  let service = {}
 
   let getExplorers = () => {
     return $q((resolve, reject) => {
-    $http.get(`http://localhost:5000/explorer`)
-    .success((obj) => {
-      resolve(obj)
-    })
-    .error((error) => {
-      reject(error)
-      })
+    $http.get(`${Celeste_API_URL}explorer`)
+    .success(resolve)
+    .error(reject)
     })
   }
 
   let getExplorerById = (explorerId) => {
     return $q((resolve, reject) => {
-    $http.get(`http://localhost:5000/explorer/${explorerId}`)
-    .success((obj) => {
-      console.log(obj, "explorer object")
-      resolve(obj)
-    })
-    .error((error) => {
-      reject(error)
-      })
+    $http.get(`${Celeste_API_URL}${explorerId}`)
+    .success(resolve)
+    .error(reject)
     })
   }
 
@@ -34,19 +25,14 @@ app.factory("ExplorerFactory", function($q, $http, AuthFactory){
     return $q((resolve, reject) => {
     $http({
       method: 'POST',
-      url: `http://localhost:5000/explorer`,
+      url: `${Celeste_API_URL}`,
       data: newProfile,
       headers: {
         'Content-type': 'application/json'
       }
     })
-    .success((obj) => {
-      console.log(obj)
-      resolve(obj)
-    })
-    .error((error) => {
-      reject(error)
-      })
+    .success(resolve)
+    .error(reject)
     })
   }
   service = {getExplorers, postExplorer, getExplorerById}

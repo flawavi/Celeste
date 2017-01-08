@@ -1,12 +1,12 @@
 'use strict'
 
-app.factory('AnswersFactory', function($q, $http){
+app.factory('AnswersFactory', function($q, $http, Celeste_API_URL){
 
-  let service
+  let service = {}
 
   let getAnswersByJourneyID = (JourneyID) => {
     return $q((resolve, reject) => {
-      $http.get(`http://localhost:5000/answers/${JourneyID}`)
+      $http.get(`${Celeste_API_URL}${JourneyID}`)
       .success(answers => {
         let answersArr = answers.map(d => {
           let answersObj = {
