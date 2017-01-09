@@ -5,8 +5,8 @@ app.controller('LoginCtrl', function(
   $route,
   $window,
   $location,
-  AuthFactory,
-  ExplorerFactory){
+  AuthFactory
+){
 
   $scope.greeting = 'Hello, Explorer!'
   $scope.galonzo = 'Or as we say on my home planet: Galonzo, Explorer!'
@@ -62,7 +62,7 @@ app.controller('LoginCtrl', function(
         $window.location.href = "#/login"
       }
     },
-    (error) => {
+    error => {
       console.log(error)
     })
   }

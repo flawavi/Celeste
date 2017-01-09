@@ -124,7 +124,7 @@ app.controller('DestinationCtrl', function(
           questionElement = document.getElementById(`${d}`),
           answerElement = document.getElementById(`${$scope.selectedAnswers[questionIDs[i]]}`)
       if($scope.selectedAnswers[questionIDs[i]].includes("true")){
-        questionElement.style.setProperty("color", "green")
+        questionElement.style.setProperty("color", "lightgreen")
         questionElement.style.setProperty("font-weight", "bold")
         questionElement.innerHTML = "Correct!"
         return "true"
