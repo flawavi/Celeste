@@ -12,11 +12,11 @@
 
   <div class="container-fluid" ng-show="quiz">
     <div class="col-sm-6">
-      <h6 class="celesteText">Here are a bunch of questions related to {{topic}}</h6>
+      <h6 class="celesteText">What have you learned about {{topic}}?</h6>
       <div>
         <form class="quizForm">
           <ol>
-            <li ng-repeat="q in questions">{{q.question}}
+            <li class="celesteText" ng-repeat="q in questions">{{q.question}}
               <ol>
                 <li ng-repeat="a in answers | filter: {questionId: q.questionsID}">
                   <label id="{{a.answerId}}{{a.correct}}">
