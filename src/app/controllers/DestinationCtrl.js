@@ -2,7 +2,7 @@
 
 const IMG_PATH = {
   '1': '/imgs/moon.jpg',
-  '2': '/imgs/2.svg',
+  '2': '/imgs/mars.svg',
   '3': '/imgs/jupiter-image.jpg',
   '4': '/imgs/saturn-mosaic-natural-light.jpg',
   '5': '/imgs/our-sun.jpg',
