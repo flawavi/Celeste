@@ -2,8 +2,10 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" ng-href="/#/command_deck">CELESTE</a>
-      <h6 class="celesteText" ng-show="isLoggedIn">{{explorer.firstName}} is currently exploring the universe</h6>
-      <h6 ng-show="notLoggedIn">{{pleaseCreateAccount}}</h6>
+      <div class="celesteText">
+        <h6 ng-show="isLoggedIn">{{explorer.firstName}} is currently exploring the universe</h6>
+        <h6 ng-show="notLoggedIn">{{pleaseCreateAccount}}</h6>
+      </div>
       </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
