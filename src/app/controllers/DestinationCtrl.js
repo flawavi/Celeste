@@ -3,9 +3,9 @@
 const IMG_PATH = {
   '1': '/imgs/1.png',
   '2': '/imgs/2.svg',
-  '3': '/imgs/3.svg',
-  '4': '/imgs/4.png',
-  '5': '/imgs/5.svg',
+  '3': '/imgs/jupiter-image.jpg',
+  '4': '/imgs/saturn-mosaic-natural-light.jpg',
+  '5': '/imgs/our-sun.jpg',
   '6': '/imgs/6.png',
   '7': '/imgs/7.jpg',
   '8': '/imgs/8.svg',
