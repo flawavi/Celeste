@@ -1,7 +1,7 @@
 'use strict'
 
 const IMG_PATH = {
-  '1': '/imgs/1.png',
+  '1': '/imgs/moon.jpg',
   '2': '/imgs/2.svg',
   '3': '/imgs/jupiter-image.jpg',
   '4': '/imgs/saturn-mosaic-natural-light.jpg',
